@@ -1,6 +1,0 @@
-C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Entities.dll
-C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Entities.pdb
-C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Entities\obj\Debug\ArtShop.Entities.csprojAssemblyReference.cache
-C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Entities\obj\Debug\ArtShop.Entities.csproj.CoreCompileInputs.cache
-C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Entities\obj\Debug\ArtShop.Entities.dll
-C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Entities\obj\Debug\ArtShop.Entities.pdb
