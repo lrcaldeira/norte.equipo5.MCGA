@@ -1,0 +1,7 @@
+C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Services.dll
+C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Services.pdb
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services\obj\Debug\ArtShop.Services.csprojAssemblyReference.cache
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services\obj\Debug\ArtShop.Services.csproj.CoreCompileInputs.cache
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services\obj\Debug\ArtShop.Services.csproj.CopyComplete
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services\obj\Debug\ArtShop.Services.dll
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services\obj\Debug\ArtShop.Services.pdb

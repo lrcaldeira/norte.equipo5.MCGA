@@ -1,0 +1,7 @@
+C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Services.Http.dll
+C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Services.Http.pdb
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services.Http\obj\Debug\ArtShop.Services.Http.csprojAssemblyReference.cache
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services.Http\obj\Debug\ArtShop.Services.Http.csproj.CoreCompileInputs.cache
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services.Http\obj\Debug\ArtShop.Services.Http.csproj.CopyComplete
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services.Http\obj\Debug\ArtShop.Services.Http.dll
+C:\Users\Luciana\Desktop\ArtShopSolution\Services\ArtShop.Services.Http\obj\Debug\ArtShop.Services.Http.pdb

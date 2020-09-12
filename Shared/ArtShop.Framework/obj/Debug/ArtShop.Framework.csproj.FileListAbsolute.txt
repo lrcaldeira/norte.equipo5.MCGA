@@ -1,0 +1,6 @@
+C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Framework.dll
+C:\Users\Luciana\Desktop\ArtShopSolution\bin\ArtShop.Framework.pdb
+C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Framework\obj\Debug\ArtShop.Framework.csprojAssemblyReference.cache
+C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Framework\obj\Debug\ArtShop.Framework.csproj.CoreCompileInputs.cache
+C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Framework\obj\Debug\ArtShop.Framework.dll
+C:\Users\Luciana\Desktop\ArtShopSolution\Shared\ArtShop.Framework\obj\Debug\ArtShop.Framework.pdb
