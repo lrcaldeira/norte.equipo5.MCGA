@@ -28,11 +28,11 @@ namespace ArtShop.Entities.Model
             /// <summary>
             /// User Id
             /// </summary>        
-            [DisplayName("User Id")]
+            [DisplayName("User Name")]
             [Required(ErrorMessage = "Requerido")]
             [MaxLength(128, ErrorMessage = "User Id Longitud  128 caracteres")]
             public string
-              UserId
+              UserName
             {
                 get;
                 set;
@@ -41,10 +41,10 @@ namespace ArtShop.Entities.Model
             /// <summary>
             /// Product Id
             /// </summary>        
-            [DisplayName("Product Id")]
+            [DisplayName("Product")]
             [Required(ErrorMessage = "Requerido")]
             public int
-              ProductId
+              Product
             {
                 get;
                 set;
