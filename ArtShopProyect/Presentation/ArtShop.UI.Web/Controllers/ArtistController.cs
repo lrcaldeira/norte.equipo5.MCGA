@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ArtShop.UI.Process;
 using ArtShop.Entities.Model;
@@ -9,7 +6,7 @@ using System.Net;
 
 namespace ArtShop.UI.Web.Controllers
 {
-    public class ArtistController : Controller
+    public class ArtistController : BaseController
     {
         private ArtistProcess artistProcess = new ArtistProcess();
         // GET: Artist
@@ -29,11 +26,21 @@ namespace ArtShop.UI.Web.Controllers
         [HttpPost]
         public ActionResult Create(Artist artist)
         {
-            artist.ChangedOn = DateTime.Now;
-            artist.CreatedOn = DateTime.Now;
-            artistProcess.ArgregarArtista(artist);
+            this.CheckAuditPattern(artist, true);
+            var listModel = artistProcess.ValidateModel(artist);
+            if (ModelIsValid(listModel))
+                return View(artist);
+            try
+            {
+                artistProcess.ArgregarArtista(artist);
+                return RedirectToAction("Index");
 
-            return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MessageDanger = ex.Message;
+                return View(artist);
+            }
         }
 
         public ActionResult Delete(int? id)
@@ -63,6 +70,39 @@ namespace ArtShop.UI.Web.Controllers
 
             artistProcess.BorrarArtista(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var artist = artistProcess.GetArtist(id.Value);
+            if (artist == null)
+            {
+                return HttpNotFound();
+            }
+            return View(artist);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Artist artist)
+        {
+            this.CheckAuditPattern(artist);
+            var listModel = artistProcess.ValidateModel(artist);
+            if (ModelIsValid(listModel))
+                return View(artist);
+            try
+            {
+                artistProcess.EditarArtista(artist);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MessageDanger = ex.Message;
+                return View(artist);
+            }
         }
 
     }

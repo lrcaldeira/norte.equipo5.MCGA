@@ -2,6 +2,7 @@
 using ArtShop.Entities.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,11 @@ namespace ArtShop.UI.Process
         public Artist GetArtist(int id)
         {
             return biz.GetArtist(id);
+        }
+
+        public List<ValidationResult> ValidateModel(Artist artist)
+        {
+            return biz.ValidateModel(artist);
         }
     }
 }

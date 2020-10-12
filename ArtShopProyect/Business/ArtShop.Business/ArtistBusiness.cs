@@ -2,6 +2,7 @@
 using ArtShop.Entities.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,11 @@ namespace ArtShop.Business
         public Artist GetArtist(int id)
         {
             return db.GetById(id);
+        }
+
+        public List<ValidationResult> ValidateModel(Artist artist)
+        {
+            return db.ValidateModel(artist);
         }
     }
 }
