@@ -25,5 +25,15 @@ namespace ArtShop.Business
         {
             return db.Create(artist);
         }
+
+        public void BorrarArtista(int id)
+        {
+            db.Delete(id);
+        }
+
+        public Artist GetArtist(int id)
+        {
+            return db.GetById(id);
+        }
     }
 }

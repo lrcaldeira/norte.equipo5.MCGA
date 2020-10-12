@@ -25,5 +25,15 @@ namespace ArtShop.UI.Process
         {
             return biz.AgregarArtista(artist);
         }
+
+        public void BorrarArtista(int id)
+        {
+            biz.BorrarArtista(id);
+        }
+
+        public Artist GetArtist(int id)
+        {
+            return biz.GetArtist(id);
+        }
     }
 }

@@ -26,6 +26,7 @@ namespace ArtShop.Entities.Model
         public string Description { get; set; }
         [DisplayName("Cuadros")]
         public int TotalProducts { get; set; }
+        [DisplayName("Full Name")]
         public string FullName { get { return FirstName + " " + LastName; } }
         public virtual ICollection<Product> Product { get; set; }
     }

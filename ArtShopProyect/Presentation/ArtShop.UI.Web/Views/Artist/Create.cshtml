@@ -1,0 +1,64 @@
+﻿
+@model ArtShop.Entities.Model.Artist
+
+@{ ViewBag.Title = "Nuevo Artista";}
+
+<div class="container-fluid">
+    <h2 class="title"><a href="#"> Nuevo Artista</a></h2>
+    <p class="byline">
+        <h4>Artista</h4>
+    </p>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <div class="form">
+                <hr />
+                <span class="text-danger">@ViewBag.MessageDanger</span>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName)
+                    <div>
+                        @Html.EditorFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName)
+                    <div>
+                        @Html.EditorFor(model => model.LastName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LifeSpan)
+                    <div>
+                        @Html.EditorFor(model => model.LifeSpan)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Country)
+                    <div>
+                        @Html.EditorFor(model => model.Country)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description)
+                    <div>
+                        @Html.EditorFor(model => model.Description)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TotalProducts)
+                    <div>
+                        @Html.EditorFor(model => model.TotalProducts)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input class="btn btn-primary" type="submit" value="Guardar" />
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-secondary" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
