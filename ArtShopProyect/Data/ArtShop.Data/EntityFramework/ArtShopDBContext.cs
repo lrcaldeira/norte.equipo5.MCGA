@@ -12,7 +12,7 @@ namespace ArtShop.Data
 {
     public class ArtShopDbContext : DbContext
     {
-        public ArtShopDbContext() : base("name=DefaultConnection")
+        public ArtShopDbContext() : base("DefaultConnection")
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

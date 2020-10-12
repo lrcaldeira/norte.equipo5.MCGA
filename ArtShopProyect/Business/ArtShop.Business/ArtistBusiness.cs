@@ -20,5 +20,10 @@ namespace ArtShop.Business
         {
             return db.Update(artist, artist.Id);
         }
+
+        public Artist AgregarArtista(Artist artist)
+        {
+            return db.Create(artist);
+        }
     }
 }

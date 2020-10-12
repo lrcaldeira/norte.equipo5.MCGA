@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="ArtistProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\ArtShop.Business\ArtShop.Business.csproj">

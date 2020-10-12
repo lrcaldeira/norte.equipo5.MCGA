@@ -20,5 +20,10 @@ namespace ArtShop.UI.Process
         {
             return biz.EditarArtista(artist);
         }
+
+        public Artist ArgregarArtista(Artist artist)
+        {
+            return biz.AgregarArtista(artist);
+        }
     }
 }

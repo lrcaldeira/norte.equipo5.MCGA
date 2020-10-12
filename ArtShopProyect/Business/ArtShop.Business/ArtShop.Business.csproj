@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ArtistBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ArtShop.Data\ArtShop.Data.csproj">
