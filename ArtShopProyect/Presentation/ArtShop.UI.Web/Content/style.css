@@ -9652,7 +9652,8 @@ ul.common li {
 }
 
 .container-fluid {
-    padding: 25px 30px
+    padding: 25px 30px;
+    padding-left:150px;
 }
 
 .topbar {

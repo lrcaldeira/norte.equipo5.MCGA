@@ -444,6 +444,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Product\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>
