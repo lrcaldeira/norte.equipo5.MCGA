@@ -58,9 +58,9 @@
     <Compile Include="EntityFramework\ArtShopDBContext.cs" />
     <Compile Include="EntityFramework\BaseDataService.cs" />
     <Compile Include="EntityFramework\IDataService.cs" />
-    <Compile Include="Migrations\202010112323111_tp.cs" />
-    <Compile Include="Migrations\202010112323111_tp.designer.cs">
-      <DependentUpon>202010112323111_tp.cs</DependentUpon>
+    <Compile Include="Migrations\202010191502410_InitialCreate.cs" />
+    <Compile Include="Migrations\202010191502410_InitialCreate.designer.cs">
+      <DependentUpon>202010191502410_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010112323111_tp.resx">
-      <DependentUpon>202010112323111_tp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010191502410_InitialCreate.resx">
+      <DependentUpon>202010191502410_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
