@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ArtShop.UI.Web
 {
@@ -20,11 +19,9 @@ namespace ArtShop.UI.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                    
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                     
+            bundles.Add(new StyleBundle("~/Content/css").Include(                     
                       "~/Content/site.css"));
         }
     }

@@ -2,30 +2,261 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="container-fluid">
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
-    <div class="row page-titles">
-        <div class="col-md-6 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-md-5 align-self-center">
+                <h4 class="page-title">Nuestros Productos</h4>
+                <div class="d-flex align-items-center">
+                </div>
+            </div>
         </div>
     </div>
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-    <!-- Start Page Content -->
+    <!-- Container fluid  -->
     <!-- ============================================================== -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-block">
-                    This is some text within a card block.
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row el-element-overlay">
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/almuerzo-de-remeros-renoir.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/almuerzo-de-remeros-renoir.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">Almuerzo de Remeros</h4>
+                                <span class="text-muted">Rembrandt</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-dark btn-circle">$100</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/campo-amapolas-monet.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/campo-amapolas-monet.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">Campo de Amapolas</h4>
+                                <span class="text-muted">Monet</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-success btn-circle">$300</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/campo-trigo-van-gogh.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/campo-trigo-van-gogh.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">Campo de Trigor</h4>
+                                <span class="text-muted">Van Gogh</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-dark btn-circle">$200</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/jardin-giverny-monet.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/jardin-giverny-monet.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">Jardin Giverny</h4>
+                                <span class="text-muted">Monet</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-info btn-circle">$350</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/la-grenouillere-renoir.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/la-grenouillere-renoir.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">La grenouillere</h4>
+                                <span class="text-muted">Renoir</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-success btn-circle">$250</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/la-scapigliata-da-vinci.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/la-scapigliata-da-vinci.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">La Scapigliata</h4>
+                                <span class="text-muted">Da Vinci</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-info btn-circle">$450</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/persistencia-memoria-dali-obra.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/persistencia-memoria-dali-obra.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">La persistencia de la memoria</h4>
+                                <span class="text-muted">Dali</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-warning btn-circle">$350</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/senoritas-avignon-picasso.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/senoritas-avignon-picasso.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">Las señoritas de Avignon</h4>
+                                <span class="text-muted">Picasso</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-secondary btn-circle">$350</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/torero-alucinogeno-dali.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/torero-alucinogeno-dali.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">Torero Alucinogeno</h4>
+                                <span class="text-muted">Dali</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-dark btn-circle">$150</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item pb-3">
+                        <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                            <img src="~/Content/Imagens/Obras/ultima-cena-reproduccion.jpg" class="d-block position-relative w-100" alt="user" />
+                            <div class="el-overlay w-100 overflow-hidden">
+                                <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                                    <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/Imagens/Obras/ultima-cena-reproduccion.jpg"><i class="icon-magnifier"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex no-block align-items-center">
+                            <div class="ml-3">
+                                <h4 class="mb-0">La ultima cena</h4>
+                                <span class="text-muted">Dali</span>
+                            </div>
+                            <div class="ml-auto mr-3">
+                                <button type="button" class="btn btn-danger btn-circle">$500</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

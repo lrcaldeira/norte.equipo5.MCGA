@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - ArtShop</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -17,7 +17,7 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <!-- You can change the theme colors from here -->
     <link href="~/Content/blue.css" rel="stylesheet" />
-
+    <link href="~/Content/style.min.css" rel="stylesheet" />
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -41,21 +41,17 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
 
-                        <b>
-                            <img src="~/Content/Imagens/logo-icon.png" />
-                        </b>
-
                         <span>
-                            <img src="~/Content/Imagens/logo-text.png" />
+                            <img src="~/Content/Imagenes/Logo_imagen.png" />
+                            <img src="~/Content/Imagenes/Logo_txt.png" />
                         </span>
                     </a>
                 </div>
 
-
                 <div id="navbarSupportedContent" class="navbar-collapse collapse">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" aria-haspopup="true" aria-expanded="false">Current User</a>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" aria-haspopup="true" aria-expanded="false">@Html.Partial("_LoginPartial")</a>
                         </li>
                     </ul>
                 </div>
@@ -67,28 +63,8 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li>
-                            <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Home</a>
-                        </li>
-                        <li>
-                            <a href="/Artist/Index" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>Artists</a>
-                        </li>
-                        <li>
-                            <a href="#" class="waves-effect"><i class="fa fa-font m-r-10" aria-hidden="true"></i>Products</a>
-                        </li>
-                        <li>
-                            <a href="#" class="waves-effect"><i class="fa fa-globe m-r-10" aria-hidden="true"></i>Shop</a>
-                        </li>
-                        <li>
-                            <a href="/Home/Contact" class="waves-effect"><i class="fa fa-columns m-r-10" aria-hidden="true"></i>Contact</a>
-                        </li>
-                        <li>
-                            <a href="#" class="waves-effect"><i class="fa fa-info-circle m-r-10" aria-hidden="true"></i>Cart</a>
-                        </li>
-
-                        <li>
-
-                        </li>
+                        
+                        @Html.Partial("_MenuPartial")
 
                     </ul>
 

@@ -26,5 +26,12 @@ namespace ArtShop.UI.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Dashboard()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
