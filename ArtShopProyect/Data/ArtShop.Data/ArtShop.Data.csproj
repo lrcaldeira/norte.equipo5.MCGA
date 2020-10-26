@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtistDAC.cs" />
+    <Compile Include="DataAccessComponent.cs" />
     <Compile Include="EntityFramework\ArtShopDBContext.cs" />
     <Compile Include="EntityFramework\BaseDataService.cs" />
     <Compile Include="EntityFramework\IDataService.cs" />

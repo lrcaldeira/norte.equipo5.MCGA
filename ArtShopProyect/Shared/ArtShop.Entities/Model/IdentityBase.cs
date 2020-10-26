@@ -4,11 +4,14 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ArtShop.Entities.Model
 {
+    [DataContract]
+    [Serializable]
     public class IdentityBase
     {
         [Key]
