@@ -12,7 +12,7 @@ namespace ArtShop.Data
 {
   public class ProductDAC: DataAccessComponent
     {
-        public ProductDAC Create(Product product)
+        public Product Create(Product product)
         {
             const string SQL_STATEMENT =
                 "INSERT INTO dbo.Product ([Title], [Descripcion], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId]) " +
@@ -24,7 +24,7 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Title", DbType.String, product.Title);
                 db.AddInParameter(cmd, "@Descripcion", DbType.String, product.Description);
                 db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
-                db.AddInParameter(cmd, " @Price", DbType.String, product.Price);
+                db.AddInParameter(cmd, "@Price", DbType.String, product.Price);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.String, product.QuantitySold);
                 db.AddInParameter(cmd, "@AvgStars", DbType.Int32, product.AvgStars);
                 db.AddInParameter(cmd, "@ArtistId", DbType.Int32, product.ArtistId);
