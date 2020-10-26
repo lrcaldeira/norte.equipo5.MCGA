@@ -2049,6 +2049,7 @@ ul.common li {
                 }
 
         .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
+            float:right;
             padding-left: .75rem;
             padding-right: .75rem;
             font-size: 17px;
@@ -2063,7 +2064,7 @@ ul.common li {
             position: relative;
             margin-top: 13px;
             margin-right: 10px;
-            display: inline-block
+            display: inline-block;
         }
 
             .topbar .top-navbar .app-search input {
@@ -7463,7 +7464,8 @@ a.mytooltip {
             -webkit-flex-wrap: nowrap;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
-            -webkit-align-items: center
+            -webkit-align-items: center;
+
         }
 
             .topbar .top-navbar .navbar-collapse {
@@ -9653,7 +9655,8 @@ ul.common li {
 
 .container-fluid {
     padding: 25px 30px;
-    padding-left:150px;
+    min-height: calc(100vh - 180px);
+    
 }
 
 .topbar {
@@ -15023,10 +15026,10 @@ a.mytooltip {
         column-count: 2
     }
 }
-
+/**/
 @media (min-width:768px) {
-    /*.page-wrapper {
-        /*margin-left: 240px*/
+/*    .page-wrapper {
+        margin-left: 150px
     }*/
 
     .footer {
@@ -15132,7 +15135,8 @@ a.mytooltip {
 
                 .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
                     padding-left: .50rem;
-                    padding-right: .50rem
+                    padding-right: .50rem;
+
                 }
 
                 .topbar .top-navbar .navbar-nav .dropdown-menu {

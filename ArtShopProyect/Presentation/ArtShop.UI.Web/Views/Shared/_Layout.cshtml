@@ -39,8 +39,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
 
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-
+                    <a class="navbar-brand" href="/">
                         <span>
                             <img src="~/Content/Imagenes/Logo_imagen.png" />
                             <img src="~/Content/Imagenes/Logo_txt.png" />
@@ -50,9 +49,21 @@
 
                 <div id="navbarSupportedContent" class="navbar-collapse collapse">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item search-box d-none d-md-block">
+                            <form class="app-search mt-3 mr-2">
+                                <input type="text" class="form-control rounded-pill border-0" placeholder="Buscar...">
+                                <a class="srh-btn"><i class="ti-search"></i></a>
+                            </form>
+                        </li>
+                        <li class="nav-item search-box d-none d-md-block">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" aria-haspopup="true" aria-expanded="false">@Html.Partial("_LoginPartial")</a>
                         </li>
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
                     </ul>
                 </div>
             </nav>
