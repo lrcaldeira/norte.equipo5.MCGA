@@ -2,6 +2,7 @@
 using ArtShop.Entities.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace ArtShop.Business
 {
     public class ProductBusiness
     {
+        private BaseDataService<Product> db = new BaseDataService<Product>();
         public List<Product> ListarTodosLosProductos()
         {
             List<Product> result = default(List<Product>);
@@ -18,7 +20,7 @@ namespace ArtShop.Business
             return result;
         }
 
-        public void EditarProduct(Product product)
+        public void Edit(Product product)
         {
             var productDAC = new ProductDAC();
             productDAC.UpdateById(product);
@@ -32,7 +34,7 @@ namespace ArtShop.Business
             return result;
         }
 
-        public void BorrarProduct(int id)
+        public void Delete(int id)
         {
             var productDAC = new ProductDAC();
             productDAC.DeleteById(id);
@@ -46,5 +48,10 @@ namespace ArtShop.Business
             return result;
         }
 
+
+        public List<ValidationResult> ValidateModel(Product product)
+        {
+            return db.ValidateModel(product);
+        }
     }
 }
