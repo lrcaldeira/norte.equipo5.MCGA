@@ -39,10 +39,10 @@ namespace ArtShop.UI.Process
             var response = HttpGet<Artist>("api/Artist/Buscar", new List<object>() { id }, MediaType.Json);
             return response;
         }
-
         public List<ValidationResult> ValidateModel(Artist artist)
         {
             return biz.ValidateModel(artist);
         }
+
     }
 }

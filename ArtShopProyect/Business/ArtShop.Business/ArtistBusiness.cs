@@ -57,4 +57,5 @@ namespace ArtShop.Business
             return db.ValidateModel(artist);
         }
     }
+
 }

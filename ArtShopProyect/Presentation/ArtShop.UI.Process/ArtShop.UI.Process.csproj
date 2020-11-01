@@ -64,6 +64,7 @@
     <Compile Include="ArtistProcess.cs" />
     <Compile Include="MediaType.cs" />
     <Compile Include="ProcessComponent.cs" />
+    <Compile Include="ProductProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopProcess.cs" />
   </ItemGroup>
