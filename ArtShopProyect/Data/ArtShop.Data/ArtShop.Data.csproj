@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistDAC.cs" />
+    <Compile Include="CartDAC.cs" />
+    <Compile Include="CartItemDAC.cs" />
     <Compile Include="DataAccessComponent.cs" />
     <Compile Include="EntityFramework\ArtShopDBContext.cs" />
     <Compile Include="EntityFramework\BaseDataService.cs" />
@@ -65,6 +67,8 @@
       <DependentUpon>202010191502410_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="OrderDAC.cs" />
+    <Compile Include="OrderDetailDAC.cs" />
     <Compile Include="ProductDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
