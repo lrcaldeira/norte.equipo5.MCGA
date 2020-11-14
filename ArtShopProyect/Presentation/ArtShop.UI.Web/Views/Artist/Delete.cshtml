@@ -17,10 +17,10 @@
                 @Html.HiddenFor(model => model.Id)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => $"{model.FirstName} {model.LastName}", htmlAttributes: new { @class = "control-label" })
                     <div class="separator">
-                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => $"{model.FirstName} {model.LastName}", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => $"{model.FirstName} {model.LastName}", "", new { @class = "text-danger" })
                     </div>
                 </div>
 
