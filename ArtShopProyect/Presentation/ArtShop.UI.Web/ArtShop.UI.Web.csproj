@@ -247,7 +247,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -257,6 +256,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\blue.css" />
@@ -294,9 +294,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app-style-switcher.js" />
+    <Content Include="Scripts\app.init.js" />
+    <Content Include="Scripts\app.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\c3.min.js" />
+    <Content Include="Scripts\chartist-plugin-tooltip.min.js" />
+    <Content Include="Scripts\chartist.min.js" />
     <Content Include="Scripts\custom.min.js" />
+    <Content Include="Scripts\d3.min.js" />
+    <Content Include="Scripts\dashboard1.js" />
+    <Content Include="Scripts\echarts.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -328,6 +337,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\perfect-scrollbar.jquery.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -473,6 +483,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\ArtShop.Business\ArtShop.Business.csproj">
+      <Project>{1809c1bc-a45f-4a71-b229-a529689ee4b4}</Project>
+      <Name>ArtShop.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\ArtShop.Data\ArtShop.Data.csproj">
       <Project>{e8756ec0-b6da-4513-8b62-f694cdd132a3}</Project>
       <Name>ArtShop.Data</Name>
