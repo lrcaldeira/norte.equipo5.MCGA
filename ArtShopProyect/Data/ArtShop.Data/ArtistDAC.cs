@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 
-
 namespace ArtShop.Data
 {
     public partial class ArtistDAC : DataAccessComponent

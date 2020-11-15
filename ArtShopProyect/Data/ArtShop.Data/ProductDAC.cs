@@ -4,25 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArtShop.Data
 {
-  public class ProductDAC: DataAccessComponent
+  public partial class ProductDAC : DataAccessComponent
     {
         public Product Create(Product product)
         {
             const string SQL_STATEMENT =
-                "INSERT INTO dbo.Product ([Title], [Descripcion], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId]) " +
-                "VALUES(@Title, @Descripcion, @Image, @Price, @QuantitySold, @AvgStars, @ArtistId); SELECT SCOPE_IDENTITY();";
+                "INSERT INTO dbo.Product ([Title], [Description], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId]) " +
+                "VALUES(@Title, @Description, @Image, @Price, @QuantitySold, @AvgStars, @ArtistId); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Title", DbType.String, product.Title);
-                db.AddInParameter(cmd, "@Descripcion", DbType.String, product.Description);
+                db.AddInParameter(cmd, "@Description", DbType.String, product.Description);
                 db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.String, product.Price);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.String, product.QuantitySold);
@@ -41,7 +38,7 @@ namespace ArtShop.Data
                 "UPDATE dbo.Artist " +
                 "SET " +
                     "[Title]=@Title, " +
-                    "[Descripcion]=@Descripcion, " +
+                    "[Description]=@Description, " +
                     "[Image]=@Image, " +
                     "[Price]= @Price, " +
                     "[QuantitySold]=@QuantitySold, " +
@@ -52,7 +49,7 @@ namespace ArtShop.Data
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Title", DbType.String, product.Title);
-                db.AddInParameter(cmd, "@Descripcion", DbType.String, product.Description);
+                db.AddInParameter(cmd, "@Description", DbType.String, product.Description);
                 db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.String, product.Price);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.String, product.QuantitySold);
@@ -80,7 +77,7 @@ namespace ArtShop.Data
         public Product SelectById(int id)
         {
             const string SQL_STATEMENT =
-                "SELECT [Id], [Title], [Descripcion], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId] " +
+                "SELECT [Id], [Title], [Description], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId] " +
                 "FROM dbo.Product  " +
                 "WHERE [Id]=@Id ";
 
@@ -107,7 +104,7 @@ namespace ArtShop.Data
         public List<Product> Select()
         {
             const string SQL_STATEMENT =
-                "SELECT [Id], [Title], [Descripcion], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId] " +
+                "SELECT [Id], [Title], [Description], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId] " +
                 "FROM dbo.Product ";
 
             List<Product> result = new List<Product>();
@@ -135,7 +132,7 @@ namespace ArtShop.Data
 
             product.Id = GetDataValue<int>(dr, "Id");
             product.Title = GetDataValue<string>(dr, "Title");
-            product.Description = GetDataValue<string>(dr, "Descripcion");
+            product.Description = GetDataValue<string>(dr, "Description");
             product.Image = GetDataValue<string>(dr, "Image");
             product.Price = GetDataValue<double>(dr, "Price");
             product.QuantitySold = GetDataValue<int>(dr, "QuantitySold");
