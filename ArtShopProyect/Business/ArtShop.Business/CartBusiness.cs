@@ -42,5 +42,10 @@ namespace ArtShop.Business
         {
             return cartdac.SelectById(id);
         }
+
+        public List<ValidationResult> ValidateModel(Cart cart)
+        {
+            return db.ValidateModel(cart);
+        }
     }
 }
