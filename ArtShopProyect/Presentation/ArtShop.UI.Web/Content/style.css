@@ -7385,7 +7385,7 @@ a.mytooltip {
 
 @media (min-width:768px) {
     .page-wrapper {
-        margin-left: 130px
+        margin-left: 241px
     }
 
     .footer {
@@ -7395,7 +7395,7 @@ a.mytooltip {
 
 @media (max-width:1023px) {
     .page-wrapper {
-        margin-left: 130px;
+        margin-left: 241px;
         transition: 0.2s ease-in
     }
 

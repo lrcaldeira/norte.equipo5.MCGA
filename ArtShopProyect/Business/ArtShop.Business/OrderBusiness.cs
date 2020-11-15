@@ -12,11 +12,11 @@ namespace ArtShop.Business
     {
         private BaseDataService<Order> db = new BaseDataService<Order>();
 
-        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        OrderDAC orderdac = new OrderDAC();
-        OrderNumberDAC Ordernumber = new OrderNumberDAC();
-        OrderDetailDAC orderdetail = new OrderDetailDAC();
+        //OrderDAC orderdac = new OrderDAC();
+        //OrderNumberDAC Ordernumber = new OrderNumberDAC();
+        //OrderDetailDAC orderdetail = new OrderDetailDAC();
 
 
     }
