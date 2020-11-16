@@ -34,5 +34,27 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
+
+        [HttpPut]
+        [Route("Editar")]
+        public void Edit(Cart cart)
+        {
+            try
+            {
+                var bc = new CartBusiness();
+                bc.Edit(cart);
+            }
+            catch (Exception ex)
+            {
+                // Repack to Http error.
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
     }
 }

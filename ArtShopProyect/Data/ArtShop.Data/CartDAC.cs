@@ -12,7 +12,7 @@ namespace ArtShop.Data
         public Cart Create(Cart cart)
         {
             const string SQL_STATEMENT =
-                "INSERT INTO dbo.Cart ([Cookie], [CartDate], [CartItem], [ItemCount]) " +
+                "INSERT INTO dbo.Cart ([Cookie], [CartDate], [ItemCount]) " +
                 "VALUES(@Cookie, @CartDate, @ItemCount); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
