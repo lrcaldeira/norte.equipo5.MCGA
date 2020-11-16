@@ -13,7 +13,7 @@ namespace ArtShop.UI.Web.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            var list = cartProcess.SelectList();
+            //var list = cartProcess.SelectList();
             return View();
         }
 

@@ -56,5 +56,26 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
+
+        [HttpGet]
+        [Route("Listar")]
+        public List<Artist> List()
+        {
+            try
+            {
+                var artistBusiness = new ArtistBusiness();
+                return artistBusiness.ListarTodosLosArtistas();
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
     }
 }
