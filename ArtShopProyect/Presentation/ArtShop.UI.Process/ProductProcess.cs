@@ -19,18 +19,18 @@ namespace ArtShop.UI.Process
                 return response;
             }
 
-            public void Edit(Product product)
+            public void EditarProducto(Product product)
             {
                 HttpPost<Product>("api/Product/Editar", product, MediaType.Json);
             }
 
-            public Product Add(Product product)
+            public Product AgregarProducto(Product product)
             {
                 var response = HttpPost<Product>("api/Product/Agregar", product, MediaType.Json);
                 return response;
             }
 
-            public void Delete(int id)
+            public void BorrarProducto(int id)
             {
                 HttpDelete<Product>("api/Product/Delete", id, MediaType.Json);
             }
