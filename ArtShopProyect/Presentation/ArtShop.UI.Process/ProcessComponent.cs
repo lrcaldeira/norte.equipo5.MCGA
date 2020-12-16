@@ -125,5 +125,25 @@ namespace ArtShop.UI.Process
             return result;
         }
 
+        public static T HttpPut<T>(string path, T value, string mediaType)
+        {
+
+            var pathAndQuery = path.EndsWith("/") ? path : path += "/";
+            T result = default(T);
+            // Execute the Http call.
+            using (var client = new HttpClient())
+            {
+                Type typeOft = typeof(T);
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["serviceUrl"]);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
+
+                var response = client.PutAsJsonAsync(pathAndQuery, value).Result;
+                response.EnsureSuccessStatusCode();
+                result = response.Content.ReadAsAsync<T>().Result;
+            }
+            return result;
+        }
+
+
     }
 }

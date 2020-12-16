@@ -12,50 +12,44 @@ namespace ArtShop.Business
     public class CartBusiness
     {
         private BaseDataService<Cart> db = new BaseDataService<Cart>();
-        CartDAC cartdac = new CartDAC();
-
-        public Cart CrearCarrito(Cart cart)
+        public List<Cart> ListarTodosLosCarritos()
         {
+            // return db.Get();
 
-            //Cart update = cart.Id > 0 ? cartdac.SelectById(cart.Id) : new Cart { CreatedOn = DateTime.Now };
+            List<Cart> result = default(List<Cart>);
+            var cartDAC = new CartDAC();
+            result = cartDAC.Select();
+            return result;
+        }
 
-            //update.CartDate = cart.CartDate == null ? throw new BusinessException("b.validation.cart.cartdate.invalid") : cart.CartDate;
-            //update.Cookie = string.IsNullOrEmpty(cart.Cookie) ? throw new BusinessException("b.validation.cart.cookie.invalid") : cart.Cookie;
-            //update.ChangedOn = DateTime.Now;
-            //update.ChangedBy = cart.ChangedBy;
-            //var saved = cartdac.Create(cart);
-            //return saved;
+        public void EditarCarrito(Cart cart)
+        {
+            var cartDAC = new CartDAC();
+            cartDAC.UpdateById(cart);
+        }
 
-            cart.ChangedOn = DateTime.Now;
-            cart.ChangedBy = "nico";
-            cart.CreatedOn = DateTime.Now;
-            cart.CreatedBy = "nico";
-
+        public Cart AgregarCarrito(Cart cart)
+        {
+            //return db.Create(cart);
             Cart result = default(Cart);
-            CartDAC cartdac = new CartDAC();
-            result = cartdac.Create(cart);
+            var cartDAC = new CartDAC();
+            result = cartDAC.Create(cart);
             return result;
         }
 
-        public void Borrar(int id)
+        public void BorrarCarrito(int id)
         {
-            cartdac.DeleteById(id);
+            var cartDAC = new CartDAC();
+            cartDAC.DeleteById(id);
+            //db.Delete(id);
         }
 
-        public List<Cart> Listar()
+        public Cart GetCart(int id)
         {
-            var result = cartdac.Select();
+            //return db.GetById(id);
+            var cartDAC = new CartDAC();
+            var result = cartDAC.SelectById(id);
             return result;
-        }
-
-        public Cart Buscar(int id)
-        {
-            return cartdac.SelectById(id);
-        }
-
-        public Cart Edit(Cart cart)
-        {
-            return db.Update(cart, cart.Id);
         }
 
         public List<ValidationResult> ValidateModel(Cart cart)

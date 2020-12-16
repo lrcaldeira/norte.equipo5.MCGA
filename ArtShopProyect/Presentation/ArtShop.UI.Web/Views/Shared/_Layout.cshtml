@@ -85,59 +85,59 @@
             </div>
             >
         </aside>
+        <div class="page-wrapper">
+                 <div class="container-fluid">
+                    @RenderBody()
 
-        <div class="container">
-            @RenderBody()
+                    <footer class="footer text-center">
+                        © 2020 ArtShop Admin
+                    </footer>
 
-            <footer class="footer text-center">
-                © 2020 ArtShop Admin
-            </footer>
+                </div>
 
+            </div>
         </div>
 
-    </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+            <script src="~/Scripts/jquery.min.js"></script>
+            <!-- Bootstrap tether Core JavaScript -->
+            <script src="~/Scripts/tether.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <!-- slimscrollbar scrollbar JavaScript -->
 
+            <script src="~/Scripts/jquery.slimscroll.js"></script>
+            <!--Wave Effects -->
 
-    <script src="~/Scripts/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="~/Scripts/tether.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
+            <script src="~/Scripts/waves.js"></script>
+            <!--Menu sidebar -->
 
-    <script src="~/Scripts/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
+            <script src="~/Scripts/sidebarmenu.js"></script>
+            <!--stickey kit -->
 
-    <script src="~/Scripts/waves.js"></script>
-    <!--Menu sidebar -->
+            <script src="~/Scripts/sticky-kit.min.js"></script>
+            <!--Custom JavaScript -->
 
-    <script src="~/Scripts/sidebarmenu.js"></script>
-    <!--stickey kit -->
+            <script src="~/Scripts/custom.min.js"></script>
+            <!-- ============================================================== -->
+            <!-- Style switcher -->
+            <!-- ============================================================== -->
 
-    <script src="~/Scripts/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-
-    <script src="~/Scripts/custom.min.js"></script>
-    <!-- ============================================================== -->
-    <!-- Style switcher -->
-    <!-- ============================================================== -->
-
-    <script src="~/Scripts/jQuery.style.switcher.js"></script>
-    <!-- apps -->
-    <script src="~/Scripts/app-style-switcher.js"></script>
-    <script src="~/Scripts/app.init.js"></script>
-    <script src="~/Scripts/app.min.js"></script>
-    <script src="~/Scripts/chartist.min.js"></script>
-    <script src="~/Scripts/chartist-plugin-tooltip.min.js"></script>
-    <script src="~/Scripts/echarts.min.js"></script>
-    <!--c3 charts -->
-    <script src="~/Scripts/c3.min.js"></script>
-    <script src="~/Scripts/d3.min.js"></script>
-    <script src="~/Scripts/dashboard1.js"></script>
-    @RenderSection("scripts", required: false)
+            <script src="~/Scripts/jQuery.style.switcher.js"></script>
+            <!-- apps -->
+            <script src="~/Scripts/app-style-switcher.js"></script>
+            <script src="~/Scripts/app.init.js"></script>
+            <script src="~/Scripts/app.min.js"></script>
+            <script src="~/Scripts/chartist.min.js"></script>
+            <script src="~/Scripts/chartist-plugin-tooltip.min.js"></script>
+            <script src="~/Scripts/echarts.min.js"></script>
+            <!--c3 charts -->
+            <script src="~/Scripts/c3.min.js"></script>
+            <script src="~/Scripts/d3.min.js"></script>
+            <script src="~/Scripts/dashboard1.js"></script>
+            @RenderSection("scripts", required: false)
 </body>
 
 </html>

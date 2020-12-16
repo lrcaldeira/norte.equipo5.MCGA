@@ -57,26 +57,26 @@ namespace ArtShop.Services.Http
 
 
 
-        //[HttpGet]
-        //[Route("Buscar")]
-        //public Product Find(int id)
-        //{
-        //    try
-        //    {
-        //        var bc = new ProductBusiness();
-        //        return bc.GetProduct(id);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var httpError = new HttpResponseMessage()
-        //        {
-        //            StatusCode = (HttpStatusCode)422,
-        //            ReasonPhrase = ex.Message
-        //        };
+        [HttpGet]
+        [Route("Buscar")]
+        public Product Find(int id)
+        {
+            try
+            {
+                var bc = new ProductBusiness();
+                return bc.GetProduct(id);
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
 
-        //        throw new HttpResponseException(httpError);
-        //    }
-        //}
+                throw new HttpResponseException(httpError);
+            }
+        }
 
 
         [HttpGet]

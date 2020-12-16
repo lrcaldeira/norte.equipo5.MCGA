@@ -32,7 +32,7 @@ namespace ArtShop.UI.Web.Controllers
                 return View(cart);
             try
             {
-                cartProcess.ArgregarCarrito(cart);
+                cartProcess.AgregarCarrito(cart);
                 return RedirectToAction("Index");
 
             }

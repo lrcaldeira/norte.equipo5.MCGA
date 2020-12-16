@@ -13,17 +13,18 @@ namespace ArtShop.UI.Process
     public class CartProcess : ProcessComponent
     {
         private CartBusiness biz = new CartBusiness();
-        public List<Cart> SelectList()
+        public List<Cart> ListarCarrito()
         {
             var response = HttpGet<List<Cart>>("api/Cart/Listar", new Dictionary<string, object>(), MediaType.Json);
             return response;
         }
-        public void EditarCarrito(Cart cart)
+        public Cart EditarCarrito(Cart cart)
         {
-            HttpPost<Cart>("api/Cart/Editar", cart, MediaType.Json);
+            var response = HttpPut<Cart>("api/Cart/Editar", cart, MediaType.Json);
+            return response;
         }
 
-        public Cart ArgregarCarrito(Cart cart)
+        public Cart AgregarCarrito(Cart cart)
         {
             var response = HttpPost<Cart>("api/Cart/Agregar", cart, MediaType.Json);
             return response;

@@ -1,72 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using ArtShop.Entities;
-using ArtShop.Data;
+﻿using ArtShop.Data;
 using ArtShop.Entities.Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using ArtShop.Entities;
+
 
 namespace ArtShop.Business
 {
     public class CartItemBusiness
     {
         private BaseDataService<CartItem> db = new BaseDataService<CartItem>();
-
-        CartItemDAC cartitemdac = new CartItemDAC();
-        ProductBusiness productbusiness = new ProductBusiness();
-        CartBusiness cartbusiness = new CartBusiness();
-
-        public CartItem Crearitem(CartItem cartitem)
+        public List<CartItem> ListarTodosLosItems()
         {
-            CartItem update = cartitem.Id > 0 ? cartitemdac.SelectById(cartitem.Id) : new CartItem { CreatedOn = DateTime.Now };
+            // return db.Get();
 
-            if (cartitem.ProductId <= 0)
-            {
-                throw new BusinessException("b.validation.cartitem.productId.missing");
-            }
-
-
-            var product = productbusiness.GetProduct(cartitem.ProductId);
-            if (product == null)
-            {
-                throw new BusinessException("b.validation.cartitem.productId.invalid");
-            }
-
-            update.ProductId = cartitem.ProductId;
-
-            if (cartitem.CartId <= 0) throw new BusinessException("b.validation.cartitem.cartId.invalid");
-            if (cartbusiness.Buscar(cartitem.CartId) == null) throw new BusinessException("b.validation.cartitem.cartId.invalid");
-
-            update.CartId = cartitem.CartId;
-
-
-            update.Price = cartitem.Price <= 0
-                ? throw new BusinessException("b.validation.cartitem.price.invalid")
-                : cartitem.Price;
-
-            update.Quantity = cartitem.Quantity <= 0
-                ? throw new BusinessException("b.validation.cartitem.quantity.invalid")
-                : cartitem.Quantity;
-
-
-            update.ChangedOn = DateTime.Now;
-            update.ChangedBy = cartitem.ChangedBy;
-
-            var saved = cartitemdac.Create(cartitem);
-            return saved;
-        }
-
-        public void Borrar(int id)
-        {
-            cartitemdac.DeleteById(id);
-        }
-
-        public List<CartItem> Listar()
-        {
-            var result = cartitemdac.Select();
+            List<CartItem> result = default(List<CartItem>);
+            var cartitemDAC = new CartItemDAC();
+            result = cartitemDAC.Select();
             return result;
         }
-        public CartItem Buscar(int id)
+
+        public void EditarCartItem(CartItem cartitem)
         {
-            return cartitemdac.SelectById(id);
+            var cartitemDAC = new CartItemDAC();
+            cartitemDAC.UpdateById(cartitem);
+        }
+
+        public CartItem AgregarCartItem(CartItem cartitem)
+        {
+            //return db.Create(cartitem);
+            CartItem result = default(CartItem);
+            var cartitemDAC = new CartItemDAC();
+            result = cartitemDAC.Create(cartitem);
+            return result;
+        }
+
+        public void BorrarCartItem(int id)
+        {
+            var cartitemDAC = new CartItemDAC();
+            cartitemDAC.DeleteById(id);
+            //db.Delete(id);
+        }
+
+        public CartItem GetCartItem(int id)
+        {
+            //return db.GetById(id);
+            var cartitemDAC = new CartItemDAC();
+            var result = cartitemDAC.SelectById(id);
+            return result;
+        }
+
+        public List<ValidationResult> ValidateModel(CartItem cartitem)
+        {
+            return db.ValidateModel(cartitem);
         }
     }
 }

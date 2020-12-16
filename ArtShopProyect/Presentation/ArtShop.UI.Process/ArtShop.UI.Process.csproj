@@ -65,8 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistProcess.cs" />
+    <Compile Include="CartItemProcess.cs" />
     <Compile Include="CartProcess.cs" />
     <Compile Include="MediaType.cs" />
+    <Compile Include="OrderDetailProcess.cs" />
+    <Compile Include="OrderNumberProcess.cs" />
+    <Compile Include="OrderProcess.cs" />
     <Compile Include="ProcessComponent.cs" />
     <Compile Include="ProductProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

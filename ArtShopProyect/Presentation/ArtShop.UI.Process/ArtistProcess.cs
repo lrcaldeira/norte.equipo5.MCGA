@@ -18,9 +18,10 @@ namespace ArtShop.UI.Process
             return response;
         }
 
-        public void EditarArtista(Artist artist)
+        public Artist EditarArtista(Artist artist)
         {
-            HttpPost<Artist>("api/Artist/Editar", artist, MediaType.Json);
+            var response = HttpPut<Artist>("api/Artist/Editar", artist, MediaType.Json);
+            return response;
         }
 
         public Artist ArgregarArtista(Artist artist)

@@ -8,18 +8,17 @@ using System.Net;
 
 namespace ArtShop.Services.Http
 {
-    [RoutePrefix("api/Artist")]
-    public class ArtistService : ApiController
+    [RoutePrefix("api/CartItem")]
+    class CartItemService : ApiController
     {
-
         [HttpPost]
         [Route("Agregar")]
-        public Artist Add(Artist artist)
+        public CartItem Add(CartItem cartitem)
         {
             try
             {
-                var bc = new ArtistBusiness();
-                return bc.AgregarArtista(artist);
+                var bc = new CartItemBusiness();
+                return bc.AgregarCartItem(cartitem);
             }
             catch (Exception ex)
             {
@@ -35,12 +34,12 @@ namespace ArtShop.Services.Http
 
         [HttpPut]
         [Route("Editar")]
-        public void Edit(Artist artist)
+        public void Edit(CartItem cartitem)
         {
             try
             {
-                var bc = new ArtistBusiness();
-                bc.EditarArtista(artist);
+                var bc = new CartItemBusiness();
+                bc.EditarCartItem(cartitem);
             }
             catch (Exception ex)
             {
@@ -54,15 +53,16 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-        
+
+
         [HttpGet]
         [Route("Buscar")]
-        public Artist Find(int id)
+        public CartItem Find(int id)
         {
             try
             {
-                var bc = new ArtistBusiness();
-                return bc.GetArtist(id);
+                var bc = new CartItemBusiness();
+                return bc.GetCartItem(id);
             }
             catch (Exception ex)
             {
@@ -75,15 +75,16 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
+
 
         [HttpGet]
         [Route("Listar")]
-        public List<Artist> List()
+        public List<CartItem> List()
         {
             try
             {
-                var bc = new ArtistBusiness();
-                return bc.ListarTodosLosArtistas();
+                var bc = new CartItemBusiness();
+                return bc.ListarTodosLosItems();
             }
             catch (Exception ex)
             {
@@ -96,6 +97,7 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
+
 
         [HttpDelete]
         [Route("Eliminar")]
@@ -103,8 +105,8 @@ namespace ArtShop.Services.Http
         {
             try
             {
-                var bc = new ArtistBusiness();
-                bc.BorrarArtista(id);
+                var bc = new CartItemBusiness();
+                bc.BorrarCartItem(id);
             }
             catch (Exception ex)
             {
@@ -117,6 +119,5 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-
     }
 }
