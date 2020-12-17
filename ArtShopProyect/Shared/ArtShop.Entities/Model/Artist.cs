@@ -42,5 +42,10 @@ namespace ArtShop.Entities.Model
         public int TotalProducts { get; set; }
 
         public virtual ICollection<Product> Product { get; set; }
+
+        public string getFullname()
+        {
+            return this.FirstName + " " + this.LastName;
+        }
     }
 }

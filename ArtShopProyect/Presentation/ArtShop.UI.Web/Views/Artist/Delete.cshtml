@@ -11,34 +11,39 @@
         @using (Html.BeginForm())
         {
 
-            <div class="form-horizontal">
-                <hr />
-                <span class="text-danger">@ViewBag.MessageDanger</span>
-                @Html.HiddenFor(model => model.Id)
+        <div class="form-horizontal">
+            <hr />
+            <span class="text-danger">@ViewBag.MessageDanger</span>
+            @Html.HiddenFor(model => model.Id)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => $"{model.FirstName} {model.LastName}", htmlAttributes: new { @class = "control-label" })
-                    <div class="separator">
-                        @Html.EditorFor(model => $"{model.FirstName} {model.LastName}", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => $"{model.FirstName} {model.LastName}", "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
-                    <div class="separator">
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 separator">
-                        <input type="submit" value="Eliminar" class="btn btn-primary" />
-                        @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-secondary" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                <div class="separator">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                <div class="separator">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                <div class="separator">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col separator">
+                    <input type="submit" value="Eliminar" class="btn btn-primary" />
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-secondary" })
+                </div>
+            </div>
+        </div>
         }
     </div>
 </div>
