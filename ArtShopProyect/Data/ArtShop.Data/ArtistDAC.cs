@@ -25,10 +25,11 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Country", DbType.String, artist.Country);
                 db.AddInParameter(cmd, "@Description", DbType.String, artist.Description);
                 db.AddInParameter(cmd, "@TotalProducts", DbType.Int32, artist.TotalProducts);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.String, artist.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.String, artist.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.String, artist.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, artist.ChangedBy);
+
+                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, artist.CreatedOn != DateTime.MinValue ? artist.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, artist.ChangedOn != DateTime.MinValue ? artist.ChangedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@CreatedBy", DbType.String, String.IsNullOrEmpty(artist.CreatedBy) ? "Admin" : artist.CreatedBy);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(artist.ChangedBy) ? "Admin" : artist.ChangedBy);
 
                 artist.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -59,6 +60,9 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Description", DbType.String, artist.Description);
                 db.AddInParameter(cmd, "@TotalProducts", DbType.Int32, artist.TotalProducts);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, artist.Id);
+
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(artist.ChangedBy) ? "Admin" : artist.ChangedBy);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, artist.ChangedOn != DateTime.MinValue ? artist.ChangedOn : DateTime.Now);
 
                 db.ExecuteNonQuery(cmd);
             }

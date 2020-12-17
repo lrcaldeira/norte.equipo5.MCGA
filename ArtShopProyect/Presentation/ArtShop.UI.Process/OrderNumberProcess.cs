@@ -32,7 +32,7 @@ namespace ArtShop.UI.Process
 
         public void BorrarNroOrden(int id)
         {
-            HttpDelete<OrderNumber>("api/OrderNumber/Eliminar", id, MediaType.Json);
+            HttpDelete<OrderNumber>("api/OrderNumber/Eliminar?id=" + id, MediaType.Json);
         }
 
         public OrderNumber GetOrderNumber(int id)

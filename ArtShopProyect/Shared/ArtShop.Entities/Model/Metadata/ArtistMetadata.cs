@@ -9,6 +9,10 @@ namespace ArtShop.Entities.Model
     {
         public class ArtistMetadata
         {
+            [DisplayName("Id")]
+            [Required(ErrorMessage = "Requerido")]
+            public int Id { get; set; }
+
             [DisplayName("First Name")]
             [Required(ErrorMessage = "Requerido")]
             [MaxLength(50, ErrorMessage = "Longitud  50 caracteres")]

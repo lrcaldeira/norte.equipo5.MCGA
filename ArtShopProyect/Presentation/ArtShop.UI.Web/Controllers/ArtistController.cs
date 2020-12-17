@@ -20,7 +20,7 @@ namespace ArtShop.UI.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return View(new Artist());
         }
 
         [HttpPost]

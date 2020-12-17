@@ -12,8 +12,8 @@ namespace ArtShop.Data
         public Product Create(Product product)
         {
             const string SQL_STATEMENT =
-                "INSERT INTO dbo.Product ([Title], [Description], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId]) " +
-                "VALUES(@Title, @Description, @Image, @Price, @QuantitySold, @AvgStars, @ArtistId); SELECT SCOPE_IDENTITY();";
+                "INSERT INTO dbo.Product ([Title], [Description], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId], [CreatedOn], [ChangedOn], [CreatedBy], [ChangedBy]) " +
+                "VALUES(@Title, @Description, @Image, @Price, @QuantitySold, @AvgStars, @ArtistId, @CreatedOn, @ChangedOn, @CreatedBy, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -26,7 +26,12 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@AvgStars", DbType.Int32, product.AvgStars);
                 db.AddInParameter(cmd, "@ArtistId", DbType.Int32, product.ArtistId);
 
-               product.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
+                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, product.CreatedOn != DateTime.MinValue ? product.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, product.ChangedOn != DateTime.MinValue ? product.ChangedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@CreatedBy", DbType.String, String.IsNullOrEmpty(product.CreatedBy) ? "Admin" : product.CreatedBy);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(product.ChangedBy) ? "Admin" : product.ChangedBy);
+
+                product.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
 
             return product;
@@ -56,6 +61,8 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@AvgStars", DbType.Int32, product.AvgStars);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, product.Id);
 
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(product.ChangedBy) ? "Admin" : product.ChangedBy);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, product.ChangedOn != DateTime.MinValue ? product.ChangedOn : DateTime.Now);
                 db.ExecuteNonQuery(cmd);
             }
         }

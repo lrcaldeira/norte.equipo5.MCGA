@@ -32,7 +32,7 @@ namespace ArtShop.UI.Process
 
         public void BorrarItemCarrito(int id)
         {
-            HttpDelete<CartItem>("api/CartItem/Eliminar", id, MediaType.Json);
+            HttpDelete<CartItem>("api/CartItem/Eliminar?id=" + id, MediaType.Json);
         }
 
         public CartItem GetCartItem(int id)

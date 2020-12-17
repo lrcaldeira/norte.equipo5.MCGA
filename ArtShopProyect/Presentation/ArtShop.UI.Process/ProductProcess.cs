@@ -33,7 +33,7 @@ namespace ArtShop.UI.Process
 
             public void BorrarProducto(int id)
             {
-                HttpDelete<Product>("api/Product/Delete", id, MediaType.Json);
+                HttpDelete<Product>("api/Product/Delete?id=" + id, MediaType.Json);
             }
 
             public Product GetProduct(int id)

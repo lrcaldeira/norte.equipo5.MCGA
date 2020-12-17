@@ -15,6 +15,8 @@ namespace ArtShop.Entities.Model
     public class IdentityBase
     {
         [Key]
+        [DataMember]
+        [Browsable(false)]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Requerido")]

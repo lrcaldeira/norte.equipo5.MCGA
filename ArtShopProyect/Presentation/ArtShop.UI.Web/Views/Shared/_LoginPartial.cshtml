@@ -5,7 +5,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul id="navbar-nav">
+        <ul id="navbar-nav" style="list-style-type:none">
             <li class="navbar-nav mr-auto">
                 <a style="color:#fff" href="/Manage/" title="Manage">@User.Identity.GetUserName()</a>
             </li>

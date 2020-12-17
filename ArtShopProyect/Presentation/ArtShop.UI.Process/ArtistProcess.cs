@@ -32,12 +32,12 @@ namespace ArtShop.UI.Process
 
         public void BorrarArtista(int id)
         {
-            HttpDelete<Artist>("api/Artist/Eliminar", id, MediaType.Json);
+            HttpDelete<Artist>("api/Artist/Eliminar?id=" + id, MediaType.Json);
         }
 
         public Artist GetArtist(int id)
         {
-            var response = HttpGet<Artist>("api/Artist/Buscar", new List<object>() { id }, MediaType.Json);
+            var response = HttpGet<Artist>("api/Artist/Buscar", new Dictionary<string, object> { { "Id", id } }, MediaType.Json);
             return response;
         }
         public List<ValidationResult> ValidateModel(Artist artist)
