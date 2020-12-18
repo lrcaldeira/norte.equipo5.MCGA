@@ -47,5 +47,10 @@ namespace ArtShop.Entities.Model
         {
             return this.FirstName + " " + this.LastName;
         }
+
+        public void setArtistId(int _id)
+        {
+            this.Id = _id;
+        }
     }
 }

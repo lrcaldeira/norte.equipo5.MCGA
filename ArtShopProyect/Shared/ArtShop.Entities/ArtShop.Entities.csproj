@@ -44,15 +44,6 @@
     <Compile Include="Model\CartItem.cs" />
     <Compile Include="Model\Error.cs" />
     <Compile Include="Model\IdentityBase.cs" />
-    <Compile Include="Model\Metadata\ArtistMetadata.cs" />
-    <Compile Include="Model\Metadata\CartItemMetadata.cs" />
-    <Compile Include="Model\Metadata\CartMetadata.cs" />
-    <Compile Include="Model\Metadata\ErrorMetadata.cs" />
-    <Compile Include="Model\Metadata\OrderDetailMetadata.cs" />
-    <Compile Include="Model\Metadata\OrderMetadata.cs" />
-    <Compile Include="Model\Metadata\OrderNumberMetadata.cs" />
-    <Compile Include="Model\Metadata\ProductMetadata.cs" />
-    <Compile Include="Model\Metadata\RatingMetadata.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderDetail.cs" />
     <Compile Include="Model\OrderNumber.cs" />

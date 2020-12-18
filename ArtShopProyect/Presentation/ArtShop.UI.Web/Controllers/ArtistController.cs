@@ -23,6 +23,12 @@ namespace ArtShop.UI.Web.Controllers
             return View(new Artist());
         }
 
+        public JsonResult GetArtists()
+        {
+            var list = artistProcess.ListarTodosLosArtistas();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult Create(Artist artist)
         {

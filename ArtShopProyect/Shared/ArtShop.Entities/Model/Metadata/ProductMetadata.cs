@@ -43,8 +43,8 @@ namespace ArtShop.Entities.Model
 
             [DisplayName("Artist Id")]
             [Required(ErrorMessage = "Requerido")]
-            public int
-              ArtistId
+            public Artist
+              Artist
             {
                 get;
                 set;

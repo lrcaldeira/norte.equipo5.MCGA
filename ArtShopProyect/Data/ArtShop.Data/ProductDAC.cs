@@ -24,7 +24,7 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Price", DbType.String, product.Price);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.String, product.QuantitySold);
                 db.AddInParameter(cmd, "@AvgStars", DbType.Int32, product.AvgStars);
-                db.AddInParameter(cmd, "@ArtistId", DbType.Int32, product.ArtistId);
+                db.AddInParameter(cmd, "@ArtistId", DbType.Int32, product.Artist.Id);
 
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, product.CreatedOn != DateTime.MinValue ? product.CreatedOn : DateTime.Now);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, product.ChangedOn != DateTime.MinValue ? product.ChangedOn : DateTime.Now);
@@ -111,8 +111,8 @@ namespace ArtShop.Data
         public List<Product> Select()
         {
             const string SQL_STATEMENT =
-                "SELECT [Id], [Title], [Description], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId] " +
-                "FROM dbo.Product ";
+                "SELECT Product.Id,Title, Product.Description,QuantitySold, Image, Price,ArtistId ,FirstName,LastName " +
+                "FROM dbo.Product,dbo.Artist where Product.ArtistId=Artist.Id Order By Product.Id asc";
 
             List<Product> result = new List<Product>();
 
@@ -140,10 +140,12 @@ namespace ArtShop.Data
             product.Id = GetDataValue<int>(dr, "Id");
             product.Title = GetDataValue<string>(dr, "Title");
             product.Description = GetDataValue<string>(dr, "Description");
+            product.QuantitySold = GetDataValue<int>(dr, "QuantitySold");
             product.Image = GetDataValue<string>(dr, "Image");
             product.Price = GetDataValue<double>(dr, "Price");
-            product.QuantitySold = GetDataValue<int>(dr, "QuantitySold");
-            product.AvgStars = GetDataValue<int>(dr, "AvgStars");
+            product.Artist.Id = GetDataValue<int>(dr, "ArtistId");
+            product.Artist.FirstName = GetDataValue<string>(dr, "FirstName");
+            product.Artist.LastName = GetDataValue<string>(dr, "LastName");
 
             return product;
         }

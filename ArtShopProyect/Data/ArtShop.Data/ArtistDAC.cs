@@ -14,7 +14,7 @@ namespace ArtShop.Data
         {
             const string SQL_STATEMENT =
                 "INSERT INTO dbo.Artist ([FirstName], [LastName], [LifeSpan], [Country], [Description], [TotalProducts], [CreatedOn], [CreatedBy], [ChangedOn],[ChangedBy]) " +
-                "VALUES(@FirstName, @LastName, @Country, @Country, @Description, @TotalProducts, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+                "VALUES(@FirstName, @LastName, @LifeSpan, @Country, @Description, @TotalProducts, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))

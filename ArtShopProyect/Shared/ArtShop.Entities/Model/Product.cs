@@ -9,7 +9,6 @@ using System.Runtime.Serialization;
 namespace ArtShop.Entities.Model
 {
     [Serializable]
-    [DataContract]
     public partial class Product : IdentityBase
     {
         public Product()
@@ -17,7 +16,9 @@ namespace ArtShop.Entities.Model
             this.CartItem = new HashSet<CartItem>();
             this.OrderDetail = new HashSet<OrderDetail>();
             this.Rating = new HashSet<Rating>();
+
         }
+
 
         [DataMember]
         public string Title { get; set; }
@@ -27,17 +28,15 @@ namespace ArtShop.Entities.Model
         public string Image { get; set; }
         [DataMember]
         public double Price { get; set; }
-        [DataMember]
         public int QuantitySold { get; set; }
-        [DataMember]
         public double AvgStars { get; set; }
         [DataMember]
-        public int ArtistId { get; set; }
-        public virtual Artist Artist { get; set; }
+        public Artist Artist = new Artist();
         public virtual ICollection<CartItem> CartItem { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }
-
+        public void SetArtistId(int _id) { Artist.Id = _id; }
+        public int art { get; set; }
 
     }
 }

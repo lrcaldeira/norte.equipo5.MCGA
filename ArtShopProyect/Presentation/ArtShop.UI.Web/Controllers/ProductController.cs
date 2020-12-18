@@ -13,8 +13,7 @@ namespace ArtShop.UI.Web.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            var list = productProcess.ListarTodosLosProductos();
-            return View(list);
+            return View();
         }
 
 
@@ -42,6 +41,14 @@ namespace ArtShop.UI.Web.Controllers
                 ViewBag.MessageDanger = ex.Message;
                 return View(product);
             }
+        }
+
+        public JsonResult AddProduct(Product product)
+        {
+            product.SetArtistId(product.art);
+            var ap = new ProductProcess();
+            var list = ap.AgregarProducto(product);
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int? id)
@@ -85,6 +92,12 @@ namespace ArtShop.UI.Web.Controllers
                 return HttpNotFound();
             }
             return View(product);
+        }
+
+        public JsonResult GetProducts()
+        {
+            var list = new ProductProcess().ListarTodosLosProductos();
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

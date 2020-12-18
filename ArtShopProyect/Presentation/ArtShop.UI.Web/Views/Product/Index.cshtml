@@ -1,76 +1,101 @@
-﻿@model IEnumerable<ArtShop.Entities.Model.Product>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Gestión de Pinturas";
 }
 
-    <div class="card">
-        <div class="card-body">
-            <h2 class="card-title">Productos</h2>
 
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <h2 class="title"><a href="#">Lista de Productos</a></h2>
+        <div class="card-body">
             <p>
-                @Html.ActionLink("Create New", "Create")
+                <a href="/Product/Create" class="btn btn-primary btn-sm btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <span class="text">Agregar producto</span>
+                </a>
             </p>
             <div class="table-responsive">
-                <table id="mainTable" class="table editable-table table-bordered table-striped m-b-0 no-wrap">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Title)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Description)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Image)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Price)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.QuantitySold)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AvgStars)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ArtistId)
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Image)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Price)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.QuantitySold)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AvgStars)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ArtistId)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-                        </tr>
-                    }
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Imagen</th>
+                            <th>Precio</th>
+                            <th>Artista</th>
+                            <th>Acciones</th>
 
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: Products">
+                        <tr>
+                            <td data-bind="text: Id"></td>
+                            <td data-bind="text: Title"></td>
+                            <td data-bind="text: Description"></td>
+                            <td data-bind="text: Image"></td>
+                            <td data-bind="text: Price"></td>
+                            <td data-bind="text: Artist.FirstName() + ' ' + Artist.LastName()"></td>
+                            <td>
+                                <a data-bind="attr: { 'href': '@Url.Action("Edit", "Product")/' + Id() }">
+                                    Editar
+                                </a>
+                                |
+                                <a href="#" data-bind="click: $parent.RemoveProduct">
+                                    Eliminar
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+
+                    </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+
 </div>
-</div>
+<!-- /.container-fluid -->
+
+
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/knockout-3.5.1.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+
+    <script>
+        var AppViewModel = function () {
+            var self = this;
+            self.Products = ko.mapping.fromJS([]);
+            $.getJSON("/Product/GetProducts",
+                function (data) {
+                    ko.mapping.fromJS(data, {}, self.Products);
+                });
+        };
+        AppViewModel.prototype.RemoveProduct = function (data) {
+            if (confirm('Desea Eliminar la Pintura ' + data.Title() + '?')) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Product/RemoveProduct/' + data.Id(),
+                    success: function (result) {
+                        window.location = "/Product";
+                    }
+                }).fail(
+                    function (xhr, textStatus, err) {
+                        alert(err);
+                    });
+            } else {
+            }
+        };
+        var viewModel = new AppViewModel();
+        ko.applyBindings(viewModel);
+    </script>
+
+}
