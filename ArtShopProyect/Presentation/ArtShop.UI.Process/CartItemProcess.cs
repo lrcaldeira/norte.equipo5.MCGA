@@ -30,11 +30,16 @@ namespace ArtShop.UI.Process
             return response;
         }
 
-        public void BorrarItemCarrito(int id)
+        public void EliminarItemCarrito(int id)
         {
             HttpDelete<CartItem>("api/CartItem/Eliminar?id=" + id, MediaType.Json);
         }
 
+        public CartItem ListarUno(int Id)
+        {
+            var response = HttpGet<CartItem>("api/CartItem/Buscar", new Dictionary<string, object> { { "Id", Id } }, MediaType.Json);
+            return response;
+        }
         public CartItem GetCartItem(int id)
         {
             var response = HttpGet<CartItem>("api/CartItem/Buscar", new List<object>() { id }, MediaType.Json);

@@ -44,5 +44,11 @@ namespace ArtShop.UI.Process
         {
             return biz.ValidateModel(cart);
         }
+
+        public Cart ListarUno(int Id)
+        {
+            var response = HttpGet<Cart>("api/Cart/Buscar", new Dictionary<string, object> { { "Id", Id } }, MediaType.Json);
+            return response;
+        }
     }
 }
