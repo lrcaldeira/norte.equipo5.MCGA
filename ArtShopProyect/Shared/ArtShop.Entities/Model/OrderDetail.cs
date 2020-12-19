@@ -21,5 +21,6 @@ namespace ArtShop.Entities.Model
 
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+        public string Titulo { get; set; }
     }
 }

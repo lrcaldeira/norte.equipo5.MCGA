@@ -13,7 +13,7 @@ namespace ArtShop.UI.Process
     public class OrderProcess:ProcessComponent
     {
         private OrderBusiness biz = new OrderBusiness();
-        public List<Order> ListarOrden()
+        public List<Order> ListarOrden() //lista todo lo que esta en la orden
         {
             var response = HttpGet<List<Order>>("api/Order/Listar", new Dictionary<string, object>(), MediaType.Json);
             return response;
@@ -43,6 +43,12 @@ namespace ArtShop.UI.Process
         public List<ValidationResult> ValidateModel(Order order)
         {
             return biz.ValidateModel(order);
+        }
+
+        public Order ListarUno(int Id)
+        {
+            var response = HttpGet<Order>("api/Order/Buscar", new Dictionary<string, object> { { "Id", Id } }, MediaType.Json);
+            return response;
         }
     }
 }

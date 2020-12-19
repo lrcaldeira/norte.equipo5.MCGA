@@ -13,7 +13,8 @@ namespace ArtShop.Entities.Model
 
     public partial class Order : IdentityBase
     {
-
+        [DataMember]
+        public string UserId { get; set; }
         public DateTime OrderDate { get; set; }
 
         public double TotalPrice { get; set; }
@@ -25,5 +26,7 @@ namespace ArtShop.Entities.Model
         public string UserName { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+
+        public string Fecha { get; set; }
     }
 }
