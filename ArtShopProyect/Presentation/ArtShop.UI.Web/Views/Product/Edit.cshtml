@@ -1,91 +1,107 @@
-﻿@model ArtShop.Entities.Model.Product
-
+﻿
 @{
-    ViewBag.Title = "Edit";
+
+    var id = Request.Url.Segments.Last();
+    ViewBag.Title = "Editar producto";
 }
 
-<h2>Edit</h2>
+<div class="container-fluid">
 
+    <div class="card shadow mb-4">
+        <h2 class="title"><a href="#">Editar Producto</a></h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Product</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-       
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        <div class="card-body">
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label>Título</label>
+                    <input class="form-control" data-bind="value: Product.Title" />
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label>Descripción</label>
+                    <input class="form-control" data-bind="value: Product.Description" size="50" />
+                </div>
+                <div class="col-md-6">
+                    <label>Image</label>
+                    <input class="form-control" data-bind="textInput: Product.Image" />
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label>Precio</label>
+                    <input class="form-control" type="number" min="0" data-bind="textInput: Product.Price" />
+                </div>
+                <div class="col-md-6">
+                    <label>Artista</label>
+                    <select class="form-control" data-bind="options: Artists, optionsText:'FirstName', optionsValue: 'Id'"></select>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.QuantitySold, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.QuantitySold, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.QuantitySold, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AvgStars, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AvgStars, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AvgStars, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ArtistId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ArtistId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ArtistId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="text-center m-t-30">
+                <input type="button" value="Guardar cambios" data-bind="click: EditProduct" class="btn btn-primary" />
+                <input type="button" value="Regresar" class="btn btn-secondary btn-icon-split" onclick="window.location='/Product/Index';" />
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+<!-- /.container-fluid -->
+@section scripts
+{
+    <script src="~/Scripts/knockout-3.5.1.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script>
+        var AppViewModel = function (data) {
+            var self = this;
+            self.Artists = ko.observableArray([]);
+            Product = {
+            Id: ko.observable(),
+            Title : ko.observable(),
+            Description : ko.observable(),
+            Image : ko.observable(),
+            Price : ko.observable(),
+            art : ko.observable(),
+            }
+            var idPintura =@id;
+            $.getJSON("/Product/GetProduct/"+idPintura, function (data) {
+                ko.mapping.fromJS(data);
+                Product.Id(data.Id)
+                Product.Title(data.Title);
+                Product.Description(data.Description);
+                Product.Image(data.Image);
+                Product.Price(data.Price);
+                Product.art(data.art);
+            });
+            console.log(this.Product);
+            function Artista(data) {
+                this.Id = ko.observable(data.Id);
+                this.FirstName = ko.observable(data.FirstName);
+                this.LastName = ko.observable(data.LastName);
+            }
+            $.getJSON("/Artist/GetArtists",
+                function (data) {
+                    var Artistas = ko.utils.arrayMap(data, function (item) {
+                        return new Artista(item);
+                    });
+                    self.Artists(Artistas);
+                });
+            self.EditProduct = function (data) {
+                console.log(Product);
+                $.ajax({
+                    url: '@Url.Action("EditProduct", "Product")',
+                    type: 'GET',
+                    data: Product,
+                    contentType: 'application/json',
+                    success: function (result) {
+                       window.location = "/Product";
+                    }
+                }).fail(
+                    function (xhr, textStatus, err) {
+                        alert(err);
+                    });
+            };
+        }
+        var viewModel = new AppViewModel();
+        ko.applyBindings(viewModel);
+    </script>
 }

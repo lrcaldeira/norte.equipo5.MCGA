@@ -2,7 +2,6 @@
     ViewBag.Title = "Gestión de Pinturas";
 }
 
-
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <h2 class="title"><a href="#">Lista de Productos</a></h2>
@@ -42,16 +41,11 @@
                                     Editar
                                 </a>
                                 |
-                                <a href="#" data-bind="click: $parent.RemoveProduct">
+                                <a href="#" data-bind="click: $parent.DeleteProduct">
                                     Eliminar
                                 </a>
-
                             </td>
-
                         </tr>
-
-
-
                     </tbody>
                 </table>
             </div>
@@ -79,11 +73,11 @@
                     ko.mapping.fromJS(data, {}, self.Products);
                 });
         };
-        AppViewModel.prototype.RemoveProduct = function (data) {
-            if (confirm('Desea Eliminar la Pintura ' + data.Title() + '?')) {
+        AppViewModel.prototype.DeleteProduct = function (data) {
+            if (confirm(`Esta seguro de que desea eliminar el producto: ${data.Title()} ?`)) {
                 $.ajax({
                     type: 'GET',
-                    url: '/Product/RemoveProduct/' + data.Id(),
+                    url: '/Product/DeleteProduct/' + data.Id(),
                     success: function (result) {
                         window.location = "/Product";
                     }
@@ -91,7 +85,6 @@
                     function (xhr, textStatus, err) {
                         alert(err);
                     });
-            } else {
             }
         };
         var viewModel = new AppViewModel();

@@ -10,88 +10,37 @@ namespace ArtShop.UI.Web.Controllers
     {
         private ProductProcess productProcess = new ProductProcess();
 
-        // GET: Product
         public ActionResult Index()
         {
             return View();
         }
 
-
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new Product());
+            return View();
         }
-
-        [HttpPost]
-        public ActionResult Create(Product product)
-        {
-            this.CheckAuditPattern(product, true);
-            var listModel = productProcess.ValidateModel(product);
-            if (ModelIsValid(listModel))
-                return View(product);
-            try
-            {
-                productProcess.AgregarProducto(product);
-                return RedirectToAction("Index");
-
-            }
-            catch (Exception ex)
-            {
-                ViewBag.MessageDanger = ex.Message;
-                return View(product);
-            }
-        }
-
         public JsonResult AddProduct(Product product)
         {
             product.SetArtistId(product.art);
-            var ap = new ProductProcess();
-            var list = ap.AgregarProducto(product);
+            var list = productProcess.AgregarProducto(product);
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete(int? id)
+        public void DeleteProduct(int id)
         {
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var product = productProcess.GetProduct(id.Value);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            var product = productProcess.GetProduct(id);
-
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-
             productProcess.BorrarProducto(id);
-            return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var product = productProcess.GetProduct(id.Value);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
+            return View();
+        }
+        public ActionResult EditProduct(Product product)
+        {
+            product.SetArtistId(product.art);
+            var prod = productProcess.EditarProducto(product);
+            return Json(prod, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetProducts()
@@ -100,24 +49,11 @@ namespace ArtShop.UI.Web.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult Edit(Product product)
+        public JsonResult GetProduct(int Id)
         {
-            this.CheckAuditPattern(product);
-            var listModel = productProcess.ValidateModel(product);
-            if (ModelIsValid(listModel))
-                return View(product);
-            try
-            {
-                productProcess.EditarProducto(product);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.MessageDanger = ex.Message;
-                return View(product);
-            }
+            var prod = productProcess.BuscarProductoPorId(Id);
+            prod.art = prod.Artist.Id;
+            return Json(prod, JsonRequestBehavior.AllowGet);
         }
-
     }
 }

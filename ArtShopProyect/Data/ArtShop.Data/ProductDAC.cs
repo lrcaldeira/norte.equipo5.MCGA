@@ -37,17 +37,17 @@ namespace ArtShop.Data
             return product;
         }
 
-        public void UpdateById(Product product)
+        public Product UpdateById(Product product)
         {
             const string SQL_STATEMENT =
-                "UPDATE dbo.Artist " +
+                "UPDATE dbo.Product " +
                 "SET " +
-                    "[Title]=@Title, " +
-                    "[Description]=@Description, " +
-                    "[Image]=@Image, " +
-                    "[Price]= @Price, " +
-                    "[QuantitySold]=@QuantitySold, " +
-                    "[AvgStars]=@AvgStars  " +
+                    "[Title] = @Title, " +
+                    "[Description] = @Description, " +
+                    "[Image] = @Image, " +
+                    "[Price] = @Price, " +
+                    "[ArtistId] = @ArtistId, " +
+                    "[QuantitySold] = @QuantitySold "+
                 "WHERE [Id]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -57,15 +57,18 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Description", DbType.String, product.Description);
                 db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.String, product.Price);
+                db.AddInParameter(cmd, "@ArtistId", DbType.String, product.Artist.Id);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.String, product.QuantitySold);
-                db.AddInParameter(cmd, "@AvgStars", DbType.Int32, product.AvgStars);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, product.Id);
 
                 db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(product.ChangedBy) ? "Admin" : product.ChangedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, product.ChangedOn != DateTime.MinValue ? product.ChangedOn : DateTime.Now);
                 db.ExecuteNonQuery(cmd);
             }
+
+            return product;
         }
+
 
 
         public void DeleteById(int id)
@@ -84,9 +87,9 @@ namespace ArtShop.Data
         public Product SelectById(int id)
         {
             const string SQL_STATEMENT =
-                "SELECT [Id], [Title], [Description], [Image], [Price], [QuantitySold], [AvgStars], [ArtistId] " +
-                "FROM dbo.Product  " +
-                "WHERE [Id]=@Id ";
+                "SELECT Product.Id, [Title], Product.Description, [Image], [Price], [ArtistId], [FirstName], [LastName], QuantitySold " +
+                "FROM dbo.Product, dbo.Artist " +
+                "WHERE Product.ArtistId = Artist.Id AND Product.Id = @Id ";
 
             Product product = null;
 
@@ -111,7 +114,7 @@ namespace ArtShop.Data
         public List<Product> Select()
         {
             const string SQL_STATEMENT =
-                "SELECT Product.Id,Title, Product.Description,QuantitySold, Image, Price,ArtistId ,FirstName,LastName " +
+                "SELECT Product.Id,Title, Product.Description, QuantitySold, Image, Price, ArtistId , FirstName, LastName " +
                 "FROM dbo.Product,dbo.Artist where Product.ArtistId=Artist.Id Order By Product.Id asc";
 
             List<Product> result = new List<Product>();

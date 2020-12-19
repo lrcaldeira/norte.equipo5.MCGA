@@ -34,12 +34,12 @@ namespace ArtShop.Services.Http
 
         [HttpPut]
         [Route("Editar")]
-        public void Edit(Product product)
+        public Product Edit(Product product)
         {
             try
             {
                 var bc = new ProductBusiness();
-                bc.Edit(product);
+                return bc.Edit(product);
 
             }
             catch (Exception ex)

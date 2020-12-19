@@ -34,7 +34,7 @@ namespace ArtShop.UI.Web.Controllers
 
                 foreach (var item in listaItems)
                 {
-                    item.Product = ProductP.ListarUno(item.ProductId);
+                    item.Product = ProductP.BuscarProductoPorId(item.ProductId);
                 }
 
             }
@@ -45,7 +45,7 @@ namespace ArtShop.UI.Web.Controllers
 
         public void AddToCart(int Id)
         {
-            Product oPaint = ProductP.ListarUno((Convert.ToInt32(Id)));
+            Product oPaint = ProductP.BuscarProductoPorId((Convert.ToInt32(Id)));
 
             if (Request.Cookies.Get("cookieCart") == null)
             {

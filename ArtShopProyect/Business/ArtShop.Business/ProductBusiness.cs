@@ -20,10 +20,10 @@ namespace ArtShop.Business
             return result;
         }
 
-        public void Edit(Product product)
+        public Product Edit(Product product)
         {
             var productDAC = new ProductDAC();
-            productDAC.UpdateById(product);
+            return productDAC.UpdateById(product);
         }
 
         public Product Create(Product product)

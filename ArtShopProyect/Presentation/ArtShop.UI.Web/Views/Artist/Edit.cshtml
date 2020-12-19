@@ -5,74 +5,54 @@
 }
 
 <div class="container-fluid">
-    <h2 class="title"><a href="#"> Editar Artista</a></h2>
-    <p class="byline">
-        <h4>Artista: @Model.FirstName @Model.LastName</h4>
-    </p>
-    <div>
-        @using (Html.BeginForm())
-        {
-            <div class="form-horizontal">
 
-                <hr />
-                <span class="text-danger">@ViewBag.MessageDanger</span>
-
-                @Html.HiddenFor(model => model.Id)
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FirstName)
-                    <div>
-                        @Html.EditorFor(model => model.FirstName)
-
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Id)
+        <div class="card shadow mb-4">
+            <h2 class="title"><a href="#"> Editar Artista</a></h2>
+            <p class="byline">
+                <h4>Artista: @Model.FirstName @Model.LastName</h4>
+            </p>
+            <div class="card-body">
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LastName)
-                    <div>
-                        @Html.EditorFor(model => model.LastName)
-
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LifeSpan)
-                    <div>
-                        @Html.EditorFor(model => model.LifeSpan)
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.LifeSpan, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.LifeSpan, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Country)
-                    <div>
-                        @Html.EditorFor(model => model.Country)
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.TotalProducts, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.TotalProducts, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Description)
-                    <div>
-                        @Html.EditorFor(model => model.Description)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TotalProducts)
-                    <div>
-                        @Html.EditorFor(model => model.TotalProducts)
-                    </div>
-                </div>
-                @Html.HiddenFor(model => model.CreatedOn)
-                @Html.HiddenFor(model => model.CreatedBy)
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 separator">
-                    <input type="submit" value="Guardar" class="btn btn-primary" />
-                    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-secondary" })
-                </div>
+            <div class="text-center m-t-30">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-outline-secondary" })
             </div>
-        }
-    </div>
+        </div>
+    }
 </div>
-

@@ -64,7 +64,7 @@ namespace ArtShop.UI.Web.Controllers
             foreach (OrderDetail item in Items)
 
             {
-                var tempItem = Productp.ListarUno(item.ProductId);
+                var tempItem = Productp.BuscarProductoPorId(item.ProductId);
                 item.Titulo = tempItem.Title;
             }
 
