@@ -47,7 +47,9 @@ namespace ArtShop.Data
                     "[LifeSpan]=@LifeSpan, " +
                     "[Country]=@Country, " +
                     "[Description]=@Description, " +
-                    "[TotalProducts]=@TotalProducts " +
+                    "[TotalProducts]=@TotalProducts, " +
+                    "[ChangedBy]=@ChangedBy, " +
+                    "[ChangedOn]=@ChangedOn " +
                 "WHERE [Id]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);

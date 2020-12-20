@@ -12,8 +12,8 @@ namespace ArtShop.Data
         public Cart Create(Cart cart)
         {
             const string SQL_STATEMENT =
-                "INSERT INTO dbo.Cart ([Cookie], [CartDate], [ItemCount]) " +
-                "VALUES(@Cookie, @CartDate, @ItemCount); SELECT SCOPE_IDENTITY();";
+                "INSERT INTO dbo.Cart ([Cookie], [CartDate], [ItemCount], [CreatedOn], [CreatedBy], [ChangedOn],[ChangedBy]) " +
+                "VALUES(@Cookie, @CartDate, @ItemCount, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -21,6 +21,11 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Cookie", DbType.String, cart.Cookie);
                 db.AddInParameter(cmd, "@CartDate", DbType.String, cart.CartDate);
                 db.AddInParameter(cmd, "@ItemCount", DbType.String, cart.ItemCount);
+
+                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, cart.CreatedOn != DateTime.MinValue ? cart.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, cart.ChangedOn != DateTime.MinValue ? cart.ChangedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@CreatedBy", DbType.String, String.IsNullOrEmpty(cart.CreatedBy) ? "Admin" : cart.CreatedBy);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(cart.ChangedBy) ? "Admin" : cart.ChangedBy);
 
                 cart.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -36,6 +41,8 @@ namespace ArtShop.Data
                     "[Cookie]=@Cookie, " +
                     "[CartDate]=@CartDate, " +
                     "[ItemCount]=@ItemCount, " +
+                    "[ChangedOn]=@ChangedOn, " +
+                    "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -44,6 +51,10 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Cookie", DbType.String, cart.Cookie);
                 db.AddInParameter(cmd, "@CartDate", DbType.String, cart.CartDate);
                 db.AddInParameter(cmd, "@ItemCount", DbType.String, cart.ItemCount);
+                db.AddInParameter(cmd, "@Id", DbType.Int32, cart.Id);
+
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, cart.ChangedOn != DateTime.MinValue ? cart.ChangedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(cart.ChangedBy) ? "Admin" : cart.ChangedBy);
 
                 db.ExecuteNonQuery(cmd);
             }

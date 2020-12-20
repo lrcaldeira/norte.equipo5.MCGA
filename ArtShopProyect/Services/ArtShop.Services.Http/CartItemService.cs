@@ -1,24 +1,28 @@
-﻿using ArtShop.Entities.Model;
+﻿using ArtShop.Business;
+using ArtShop.Entities.Model;
 using System;
 using System.Collections.Generic;
-using System.Web.Http;
-using System.Net.Http;
-using ArtShop.Business;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace ArtShop.Services.Http
 {
     [RoutePrefix("api/CartItem")]
-    class CartItemService : ApiController
+    public class CartItemService : ApiController
     {
+
         [HttpPost]
         [Route("Agregar")]
-        public CartItem Add(CartItem cartitem)
+        public CartItem Add(CartItem cartItem)
         {
             try
             {
                 var bc = new CartItemBusiness();
-                return bc.AgregarCartItem(cartitem);
+                return bc.AgregarCartItem(cartItem);
             }
             catch (Exception ex)
             {
@@ -34,16 +38,15 @@ namespace ArtShop.Services.Http
 
         [HttpPut]
         [Route("Editar")]
-        public void Edit(CartItem cartitem)
+        public void Edit(CartItem cartItem)
         {
             try
             {
                 var bc = new CartItemBusiness();
-                bc.EditarCartItem(cartitem);
+                bc.EditarCartItem(cartItem);
             }
             catch (Exception ex)
             {
-                // Repack to Http error.
                 var httpError = new HttpResponseMessage()
                 {
                     StatusCode = (HttpStatusCode)422,
@@ -53,7 +56,6 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-
 
         [HttpGet]
         [Route("Buscar")]
@@ -76,7 +78,6 @@ namespace ArtShop.Services.Http
             }
         }
 
-
         [HttpGet]
         [Route("Listar")]
         public List<CartItem> List()
@@ -97,7 +98,6 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-
 
         [HttpDelete]
         [Route("Eliminar")]

@@ -12,8 +12,8 @@ namespace ArtShop.Data
         public CartItem Create(CartItem cartitem)
         {
             const string SQL_STATEMENT =
-                "INSERT INTO dbo.CartItem ([Price], [Quantity], [CartId], [ProductId]) " +
-                "VALUES(@Price, @Quantity, @CartId, @ProductId); SELECT SCOPE_IDENTITY();";
+                "INSERT INTO dbo.CartItem ([Price], [Quantity], [CartId], [ProductId], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+                "VALUES(@Price, @Quantity, @CartId, @ProductId, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -22,6 +22,11 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Quantity", DbType.String, cartitem.Quantity);
                 db.AddInParameter(cmd, "@CartId", DbType.String, cartitem.CartId);
                 db.AddInParameter(cmd, "@ProductId", DbType.String, cartitem.ProductId);
+
+                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, cartitem.CreatedOn != DateTime.MinValue ? cartitem.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, cartitem.ChangedOn != DateTime.MinValue ? cartitem.ChangedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@CreatedBy", DbType.String, String.IsNullOrEmpty(cartitem.CreatedBy) ? "Admin" : cartitem.CreatedBy);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(cartitem.ChangedBy) ? "Admin" : cartitem.ChangedBy);
 
                 cartitem.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -48,6 +53,9 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@CartId", DbType.String, cartitem.CartId);
                 db.AddInParameter(cmd, "@ProductId", DbType.String, cartitem.ProductId);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, cartitem.Id);
+
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, cartitem.ChangedOn != DateTime.MinValue ? cartitem.ChangedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(cartitem.ChangedBy) ? "Admin" : cartitem.ChangedBy);
 
                 db.ExecuteNonQuery(cmd);
             }

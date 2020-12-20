@@ -32,8 +32,7 @@ namespace ArtShop.Business
         {
             //return db.Create(cart);
             Cart result = default(Cart);
-            var cartDAC = new CartDAC();
-            result = cartDAC.Create(cart);
+            result = new CartDAC().Create(cart);
             return result;
         }
 

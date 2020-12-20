@@ -12,7 +12,7 @@ namespace ArtShop.UI.Process
 {
     public class CartItemItemProcess:ProcessComponent
     {
-       // private CartItemBusiness biz = new CartItemBusiness();
+       
         public List<CartItem> ListarItemsCarritos()
         {
             var response = HttpGet<List<CartItem>>("api/CartItem/Listar", new Dictionary<string, object>(), MediaType.Json);
@@ -45,10 +45,5 @@ namespace ArtShop.UI.Process
             var response = HttpGet<CartItem>("api/CartItem/Buscar", new List<object>() { id }, MediaType.Json);
             return response;
         }
-      /* public List<ValidationResult> ValidateModel(CartItem cartitem)
-        {
-            return biz.ValidateModel(cartitem);
-        } 
-      */
     }
 }

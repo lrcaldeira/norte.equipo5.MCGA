@@ -9,7 +9,7 @@ using System.Net;
 namespace ArtShop.Services.Http
 {
     [RoutePrefix("api/Cart")]
-    class CartService : ApiController
+    public class CartService : ApiController
     {
         [HttpPost]
         [Route("Agregar")]

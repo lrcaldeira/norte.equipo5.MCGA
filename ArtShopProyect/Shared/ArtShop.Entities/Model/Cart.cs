@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 namespace ArtShop.Entities.Model
 {
     [Serializable]
-    [DataContract]
-    public partial class Cart:IdentityBase
+    public class Cart : IdentityBase
     {
-        
         public Cart()
         {
             this.CartItem = new HashSet<CartItem>();
         }
-
         [DataMember]
         public string Cookie { get; set; }
         [DataMember]
@@ -25,6 +22,5 @@ namespace ArtShop.Entities.Model
         public int ItemCount { get; set; }
 
         public virtual ICollection<CartItem> CartItem { get; set; }
-
     }
 }

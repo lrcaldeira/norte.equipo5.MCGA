@@ -47,7 +47,9 @@ namespace ArtShop.Data
                     "[Image] = @Image, " +
                     "[Price] = @Price, " +
                     "[ArtistId] = @ArtistId, " +
-                    "[QuantitySold] = @QuantitySold "+
+                    "[QuantitySold] = @QuantitySold, "+
+                    "[ChangedBy]=@ChangedBy, " +
+                    "[ChangedOn]=@ChangedOn " +
                 "WHERE [Id]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
