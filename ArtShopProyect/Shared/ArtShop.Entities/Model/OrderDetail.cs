@@ -9,18 +9,17 @@ using System.Runtime.Serialization;
 namespace ArtShop.Entities.Model
 {
     [Serializable]
-    public partial class OrderDetail : IdentityBase
+    public class OrderDetail : IdentityBase
     {
-
+        [DataMember]
+        public int OrderId { get; set; }
+        [DataMember]
+        public int ProductId { get; set; }
+        [DataMember]
         public double Price { get; set; }
-
+        [DataMember]
         public int Quantity { get; set; }
 
-        public int OrderId { get; set; }
-        public int ProductId { get; set; }
-
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
         public string Titulo { get; set; }
     }
 }

@@ -8,16 +8,14 @@
     <!-- Page Heading -->
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Detalle de la orden</h6>
-        </div>
+        <h2 class="title"><a href="#">Orden de compra</a></h2>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Carrito</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800 TotalCarrito"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -28,7 +26,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table no-border table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Pintura</th>
@@ -41,11 +39,11 @@
                     <tbody data-bind="foreach: Items">
                         <tr>
                             <td data-bind="text: Product.Title"></td>
-                            <td data-bind="text: Price"></td>
+                            <td data-bind="text: '$ ' + Price()"></td>
                             <td data-bind="text: Quantity"></td>
 
                             <td>
-                                <input data-bind="click: $parent.RemoveItem.bind($data,Id())" type="button" value="Eliminar" class="btn btn-primary" />
+                                <input data-bind="click: $parent.RemoveItem.bind($data,Id())" type="button" value="Eliminar" class="btn btn-danger btn-sm" />
 
                             </td>
 
@@ -55,18 +53,18 @@
                 </table>
             </div>
             <div>
-                <a href="/Product/IndexFront" class="btn btn-secondary btn-icon-split">
+                <a href="/Home/Index" class="btn btn-default btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="fas fa-arrow-left"></i>
                     </span>
-                    <span class="text">Seguir comprando</span>
+                    <span class="text">Volver a la tienda</span>
                 </a>
 
                 <a href="/Order/Pago" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>
-                    <span class="text">Finalizar Compra</span>
+                    <span class="text">Comprar!</span>
                 </a>
 
             </div>

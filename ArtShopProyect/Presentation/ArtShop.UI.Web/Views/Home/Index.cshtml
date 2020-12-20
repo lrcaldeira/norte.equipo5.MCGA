@@ -122,7 +122,7 @@
                         <img data-bind="attr:{src: '/Content/imagens/Obras/'+Image()}" class="d-block position-relative w-100" alt="user">
                         <div class="el-overlay w-100 overflow-hidden">
                             <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
-                                <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" href="~/Content/imagens/Obras/'+Image()"><i class="icon-magnifier"></i></a></li>
+                                <li class="el-item d-inline-block my-0  mx-1"><a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white" data-bind="attr:{href: '/Content/imagens/Obras/'+Image()}"><i class="icon-magnifier"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -150,8 +150,17 @@
 {
     <script src="~/Scripts/knockout-3.5.1.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center-end',
+            showConfirmButton: false,
+            timer: 2000
+        })
+
         var AppViewModel = function () {
             var self = this;
             self.Products = ko.mapping.fromJS([]);
@@ -167,12 +176,22 @@
                 type: 'GET',
                 url: '/Cart/AddToCart/' + data,
                 success: function (result) {
-                    
-                    Actualizar();
 
+                    Toast.fire({
+                        icon: 'success',
+                        title: `Item was added successfully to Cart!`
+                    })
+
+                    Actualizar();
                 }
             }).fail(
                 function (xhr, textStatus, err) {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Error trying to add item to the Cart, try again later!'
+                    })
 
                 });
 

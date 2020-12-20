@@ -4,7 +4,7 @@
 @using (Html.BeginForm("CrearOrden", "Order", FormMethod.Post))
 {
     <div class="card">
-        <div class="card-top border-bottom text-center"> <a href="/Home/Index"> Volver a la Tienda</a> </div>
+        <div class="card-top border-bottom text-center"> </div>
         <div class="card-body">
             <div class="row upper"> <span><i class="fa fa-check-circle-o"></i> Datos para el pago</span>  </div>
 
@@ -40,14 +40,14 @@
                             <div class="col text-right TotalCarrito">$ 46.98</div>
                         </div>
                         <div class="row lower">
-                            <div class="col text-left">Envío</div>
-                            <div class="col text-right">Gratis</div>
+
                         </div>
                         <div class="row lower">
                             <div class="col text-left"><b>Total a pagar</b></div>
                             <div id="TotalCarrito" class="col text-right TotalCarrito"></div>
                         </div>
-                        <input type="submit" value="Confirmar Pago" class="btn-success" />
+                        <a class="btn btn-default" href="/Home/Index"> Volver a la Tienda</a>
+                        <input type="submit" value="Confirmar Pago" class="btn btn-success" />
 
 
 
