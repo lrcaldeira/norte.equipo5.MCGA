@@ -484,6 +484,8 @@
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Pago.cshtml" />
+    <Content Include="Views\Order\Compra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

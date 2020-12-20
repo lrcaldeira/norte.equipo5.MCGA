@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-using Microsoft.Ajax.Utilities;
 using ArtShop.UI.Process;
 using ArtShop.Entities.Model;
 using Microsoft.AspNet.Identity;
@@ -36,7 +34,7 @@ namespace ArtShop.UI.Web.Controllers
         {
             return View();
         }
-        public ActionResult CompraFinalizada()
+        public ActionResult Compra()
         {
             return View();
         }
@@ -90,13 +88,15 @@ namespace ArtShop.UI.Web.Controllers
             {
                 UserId = User.Identity.GetUserId(),
                 OrderDate = DateTime.Now,
-                OrderNumber = 1,
                 ItemCount = cart.ItemCount,
-                TotalPrice = Total
+                TotalPrice = Total,
+                ChangedOn = DateTime.Now,
+                CreatedOn = DateTime.Now
             };
 
             Order oOrderSave;
-            oOrderSave =Orderp.AgregarOrden(oOrder);
+
+            oOrderSave = Orderp.AgregarOrden(oOrder);
 
             foreach (var item in listaItems)
             {
@@ -109,10 +109,10 @@ namespace ArtShop.UI.Web.Controllers
                     Quantity = item.Quantity
                 };
 
-               OrderDetailp.AgregarDetalleOrden(oDetail);
+                OrderDetailp.AgregarDetalleOrden(oDetail);
             }
             Response.Cookies["cookieCart"].Expires = DateTime.Now.AddDays(-1);
-            return RedirectToAction("CompraFinalizada");
+            return RedirectToAction("Compra");
 
         }
     }

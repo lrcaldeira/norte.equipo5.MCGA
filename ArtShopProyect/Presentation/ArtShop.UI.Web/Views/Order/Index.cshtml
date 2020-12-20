@@ -1,7 +1,80 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Ordenes";
 }
 
-<h2>Index</h2>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
+    <!-- Page Heading -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Ordenes registradas</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Número de Orden</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Items</th>
+                            <th>Usuario</th>
+                            <th>Acciones</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Número de Orden</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Items</th>
+                            <th>Usuario</th>
+                            <th>Acciones</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody data-bind="foreach: Orders">
+                        <tr>
+                            <td data-bind="text: Id"></td>
+
+                            <td data-bind="text: Fecha"></td>
+                            <td data-bind="text: '$ '+ TotalPrice()"></td>
+                            <td data-bind="text: ItemCount"></td>
+                            <td data-bind="text: Usuario"></td>
+                            <td><a data-bind="attr: { href: 'Detalle/'+Id() }">Detalles</a></td>
+
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+@section scripts
+{
+    <script src="~/Scripts/knockout-3.5.1.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+
+    <script>
+        var AppViewModel = function () {
+            var self = this;
+            self.Orders = ko.mapping.fromJS([]);
+            $.getJSON("/Order/GetOrders",
+                function (data) {
+                    ko.mapping.fromJS(data, {}, self.Orders);
+                });
+        };
+        var viewModel = new AppViewModel();
+        ko.applyBindings(viewModel);
+    </script>
+
+}

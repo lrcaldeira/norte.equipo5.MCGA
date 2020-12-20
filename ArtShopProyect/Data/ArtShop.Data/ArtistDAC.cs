@@ -110,7 +110,6 @@ namespace ArtShop.Data
             return artist;
         }
 
-
         public List<Artist> Select()
         {
             const string SQL_STATEMENT =
@@ -131,7 +130,6 @@ namespace ArtShop.Data
                     }
                 }
             }
-
             return result;
         }
 

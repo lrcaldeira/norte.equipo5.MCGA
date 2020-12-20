@@ -22,10 +22,10 @@ namespace ArtShop.Business
             return result;
         }
 
-        public void EditarOrder(Order order)
+        public Order EditarOrder(Order order)
         {
             var orderDAC = new OrderDAC();
-            orderDAC.UpdateById(order);
+            return orderDAC.UpdateById(order);
         }
 
         public Order AgregarOrder(Order order)

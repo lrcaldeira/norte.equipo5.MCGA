@@ -1,94 +1,118 @@
-﻿@{ ViewBag.Title = "Carrito"; }
+﻿@{
+    ViewBag.Title = "Carrito";
+}
 
-<div class="d-flex">
-    <div class="dropdown mr-2 hidden-sm-down">
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style=""> <a class="dropdown-item" href="#">February 2020</a> <a class="dropdown-item" href="#">March 2020</a> <a class="dropdown-item" href="#">April 2020</a> </div>
-    </div>
-
-</div>
-
+<!-- Begin Page Content -->
 <div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Start Page Content -->
-    <!-- ============================================================== -->
-    <div class="row">
-        <!-- Column -->
-        <div class="col-md-9 col-lg-9">
-            <div class="card">
-                <div class="card-header bg-info">
-                   
-                </div>
+
+    <!-- Page Heading -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Detalle de la orden</h6>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table product-overview">
-                            <thead>
-                                <tr>
-                                    <th>Pintura</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio</th>
-
-                            
-
-                                    <!--  <th style="text-align:center">Action</th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-bind="text: _Product.Title"></td>
-                                    <td data-bind="text: Quantity"></td>
-                                    <td data-bind="text: Price"></td>
-
-
-                                    <td>
-                                        <input data-bind="click: $parent.RemoveItem.bind($data,Id())" type="button" value="Eliminar" class="btn btn-primary" />
-
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                        <hr>
-                        <div class="d-flex no-block align-items-center">
-                            <button class="btn btn-dark btn-outline"><i class="fas fa-arrow-left"></i> Seguir Comprando</button>
-                            
-                         
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Carrito</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800 TotalCarrito"></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Column -->
-        <div class="col-md-3 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">CARRITO</h5>
-                    <hr>
-                    <small>Total Compra</small>
-                    <h2>$612</h2>
-                    <hr>
-                    <button class="btn btn-success">Finaliza Compra</button>
-                    <button class="btn btn-secondary btn-outline">Cancel</button>
-                </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Pintura</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-bind="foreach: Items">
+                        <tr>
+                            <td data-bind="text: Product.Title"></td>
+                            <td data-bind="text: Price"></td>
+                            <td data-bind="text: Quantity"></td>
+
+                            <td>
+                                <input data-bind="click: $parent.RemoveItem.bind($data,Id())" type="button" value="Eliminar" class="btn btn-primary" />
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">For Any Support</h5>
-                    <hr>
-                    <h4><i class="ti-mobile"></i> 9998979695 (Toll Free)</h4> <small>Please contact with us if you have any questions. We are avalible 24h.</small>
-                </div>
+            <div>
+                <a href="/Product/IndexFront" class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span class="text">Seguir comprando</span>
+                </a>
+
+                <a href="/Order/Pago" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Finalizar Compra</span>
+                </a>
+
             </div>
+
         </div>
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End PAge Content -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Right sidebar -->
-    <!-- ============================================================== -->
-    <!-- .right-sidebar -->
-    <!-- ============================================================== -->
-    <!-- End Right sidebar -->
-    <!-- ============================================================== -->
+
+
+
 </div>
+<!-- /.container-fluid -->
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/knockout-3.5.1.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+
+    <script>
+        var AppViewModel = function () {
+            var self = this;
+            self.Items = ko.mapping.fromJS([]);
+            $.getJSON("/Cart/Items",
+                function (data) {
+                    ko.mapping.fromJS(data, {}, self.Items);
+                });
+        };
+        AppViewModel.prototype.RemoveItem = function (data) {
+            if (confirm('Eliminar la Pintura ?')) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Cart/DeleteItem/' + data,
+                    success: function (result) {
+                        location.reload();
+                    }
+                }).fail(
+                    function (xhr, textStatus, err) {
+                        alert(err);
+                    });
+            } else {
+            }
+        };
+        var viewModel = new AppViewModel();
+        ko.applyBindings(viewModel);
+    </script>
+
+}

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Pago";
+}
+@using (Html.BeginForm("CrearOrden", "Order", FormMethod.Post))
+{
+    <div class="card">
+        <div class="card-top border-bottom text-center"> <a href="/Home/Index"> Volver a la Tienda</a> </div>
+        <div class="card-body">
+            <div class="row upper"> <span><i class="fa fa-check-circle-o"></i> Datos para el pago</span>  </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="left border">
+                        <div class="row">
+                            <span class="header">Pago</span>
+                            <div class="icons"> <img src="https://img.icons8.com/color/48/000000/visa.png" />  </div>
+                        </div>
+
+                        <span>Nombre en la tarjeta:</span> <input class="form-control" placeholder="Ej: Juan Gomez" required> <br />
+                        <span>Número de tarjeta</span> <input class="form-control" placeholder="0125 6780 4567 9909" required>
+
+                        <div class="col-4"><label>Expira:</label> <input class="form-control" placeholder="YY/MM" required> </div>
+                        <div class="col-4"><span>CVV:</span> <input class="form-control" id="cvv" placeholder="123"> </div>
+                        <br />
+                        <input type="checkbox" id="save_card" class="align-left"> <label for="save_card">Guardar datos de la tarjeta</label>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-5">
+                    <div class="right border">
+                        <div class="header">Resumen de la compra</div>
+                        <span class="Cantidad"></span><span> Items</span>
+
+
+                        <hr>
+                        <div class="row lower">
+                            <div class="col text-left">Subtotal</div>
+                            <div class="col text-right TotalCarrito">$ 46.98</div>
+                        </div>
+                        <div class="row lower">
+                            <div class="col text-left">Envío</div>
+                            <div class="col text-right">Gratis</div>
+                        </div>
+                        <div class="row lower">
+                            <div class="col text-left"><b>Total a pagar</b></div>
+                            <div id="TotalCarrito" class="col text-right TotalCarrito"></div>
+                        </div>
+                        <input type="submit" value="Confirmar Pago" class="btn-success" />
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div> </div>
+    </div>
+}
+
+<script>
+        function ConfirmarOrden(data) {
+            $.ajax({
+                type: 'GET',
+                url: '/Order/CrearOrden',
+                success: function (result) {
+                }
+            }).fail(
+                function (xhr, textStatus, err) {
+                });
+        };
+</script>

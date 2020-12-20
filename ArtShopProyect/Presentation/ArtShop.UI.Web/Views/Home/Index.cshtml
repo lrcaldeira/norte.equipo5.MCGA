@@ -129,8 +129,8 @@
                     <div class="d-flex no-block align-items-center">
                         <div class="ml-3">
                             <h4 class="mb-0" data-bind="text: Title" />
-                            <span class="text-muted" data-bind="text: Artist.LastName()" />
-                            <span class="text-muted" data-bind="text: '$'+Price()" />
+                            <h5 class="text-muted" data-bind="text: Artist.LastName" />
+                            <h5 class="text-muted" data-bind="text: '$ ' + Price()" />
                         </div>
                         <div class="ml-auto mr-3">
                             <input data-bind="click: $parent.Agregar.bind($data,Id())" type="button" value="Comprar" class="btn default" />
@@ -167,7 +167,7 @@
                 type: 'GET',
                 url: '/Cart/AddToCart/' + data,
                 success: function (result) {
-                    console.log(result);
+                    
                     Actualizar();
 
                 }

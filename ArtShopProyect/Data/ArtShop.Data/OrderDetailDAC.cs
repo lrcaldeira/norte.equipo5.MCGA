@@ -29,7 +29,7 @@ namespace ArtShop.Data
             return orderdetail;
         }
 
-        public void UpdateById(OrderDetail orderdetail)
+        public OrderDetail UpdateById(OrderDetail orderdetail)
         {
             const string SQL_STATEMENT =
                 "UPDATE dbo.OrderDetail " +
@@ -51,6 +51,8 @@ namespace ArtShop.Data
 
                 db.ExecuteNonQuery(cmd);
             }
+
+            return orderdetail;
         }
 
 
