@@ -11,11 +11,11 @@ namespace ArtShop.UI.Web.Controllers
 {
     public class OrderController : Controller
     {
-        CartProcess Cartp = new CartProcess();
-        CartItemItemProcess Cartitemp = new CartItemItemProcess();
-        OrderProcess Orderp = new OrderProcess();
-        OrderDetailProcess OrderDetailp = new OrderDetailProcess();
-        ProductProcess Productp = new ProductProcess();
+        CartProcess cartProcess = new CartProcess();
+        CartItemItemProcess cartItemProcess = new CartItemItemProcess();
+        OrderProcess orderProcess = new OrderProcess();
+        OrderDetailProcess orderDetailProcess = new OrderDetailProcess();
+        ProductProcess productProcess = new ProductProcess();
 
         // GET: Order
         public ActionResult Index()
@@ -57,12 +57,12 @@ namespace ArtShop.UI.Web.Controllers
         {
 
             List<OrderDetail> Items = new List<OrderDetail>();
-            Items = OrderDetailp.ListarDetalleOrden().Where(x => x.OrderId == Id).ToList();
+            Items = orderDetailProcess.ListarDetalleOrden().Where(x => x.OrderId == Id).ToList();
 
             foreach (OrderDetail item in Items)
 
             {
-                var tempItem = Productp.BuscarProductoPorId(item.ProductId);
+                var tempItem = productProcess.BuscarProductoPorId(item.ProductId);
                 item.Titulo = tempItem.Title;
             }
 
@@ -74,9 +74,9 @@ namespace ArtShop.UI.Web.Controllers
 
             HttpCookie cookie = HttpContext.Request.Cookies.Get("cookieCart");
             Cart cart = new Cart();
-            cart = Cartp.ListarUno(Convert.ToInt32(cookie.Value));
+            cart = cartProcess.ListarUno(Convert.ToInt32(cookie.Value));
 
-            List<CartItem> listaItems = Cartitemp.ListarItemsCarritos().Where(x => x.CartId == Convert.ToInt32(cookie.Value)).ToList();
+            List<CartItem> listaItems = cartItemProcess.ListarItemsCarritos().Where(x => x.CartId == Convert.ToInt32(cookie.Value)).ToList();
 
             double Total = 0;
             foreach (CartItem item in listaItems)
@@ -84,7 +84,7 @@ namespace ArtShop.UI.Web.Controllers
                 Total = Total + item.Price;
             }
 
-            Order oOrder = new Order()
+            Order order = new Order()
             {
                 UserId = User.Identity.GetUserId(),
                 OrderDate = DateTime.Now,
@@ -94,22 +94,22 @@ namespace ArtShop.UI.Web.Controllers
                 CreatedOn = DateTime.Now
             };
 
-            Order oOrderSave;
+            Order orderSaved;
 
-            oOrderSave = Orderp.AgregarOrden(oOrder);
+            orderSaved = orderProcess.AgregarOrden(order);
 
             foreach (var item in listaItems)
             {
                 //Alta Detalles de orden
-                OrderDetail oDetail = new OrderDetail()
+                OrderDetail orderDetail = new OrderDetail()
                 {
-                    OrderId = oOrderSave.Id,
+                    OrderId = orderSaved.Id,
                     ProductId = item.ProductId,
                     Price = item.Price,
                     Quantity = item.Quantity
                 };
 
-                OrderDetailp.AgregarDetalleOrden(oDetail);
+                orderDetailProcess.AgregarDetalleOrden(orderDetail);
             }
             Response.Cookies["cookieCart"].Expires = DateTime.Now.AddDays(-1);
             return RedirectToAction("Compra");
